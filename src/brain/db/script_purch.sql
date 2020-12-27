@@ -3,7 +3,7 @@ create database db_purch
 go
 use db_purch
 
--- creation des tables
+-- Creation of tables
 
 
 
@@ -68,6 +68,7 @@ create table t_category
 		id
 	)
 )
+
 
 --quantification
 go 
@@ -163,7 +164,7 @@ create table t_purchase
 (
 	id int not null,
 	id_client int not null,
-	id_user int not null,
+	username varchar(255) not null,
 	date_purchase date,
 	primary key clustered
 	(
@@ -194,9 +195,39 @@ create table t_payment
 	id_purchase int not null,
 	amount float,
 	date_payment date,
-	id_user int not null,
+	username varchar(255) not null,
 	primary key clustered
 	(
 		id asc
 	)
 )
+
+
+-- Creation of constraints
+
+alter table t_category with check add constraint fk_gamme_category foreign key(id_gamme) references t_gamme(id)
+
+alter table t_product with check add constraint fk_category_product foreign key(id_categoy) references t_category(id)
+
+alter table t_providding with check add constraint fk_provider_providding foreign key(id_provider) 
+references t_provider(id)
+
+alter table t_line_providding with check add constraint fk_providding_line_providding foreign key(id_providding) 
+references t_providding(id)
+alter table t_line_providding with check add constraint fk_product_line_providding foreign key(id_product) 
+references t_product(id)
+
+alter table t_purchase with check add constraint fk_client_purchase foreign key(id_client) 
+references t_client(id)
+alter table t_purchase with check add constraint fk_user_purchase foreign key(username) 
+references t_login(username)
+
+alter table t_line_purchase with check add constraint fk_purchase_line_purchase foreign key(id_purchase) 
+references t_purchase(id)
+alter table t_line_purchase with check add constraint fk_product_line_purchase foreign key(id_product) 
+references t_product(id)
+
+alter table t_payment with check add constraint fk_purchase_payment foreign key(id_purchase) 
+references t_purchase(id)
+alter table t_payment with check add constraint fk_user_payment foreign key(username) 
+references t_login(username)
