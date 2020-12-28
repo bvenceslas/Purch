@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package brain.model;
+package brain.models;
 
 import brain.controller.IAction;
 import java.sql.Date;
@@ -12,13 +12,14 @@ import java.sql.Date;
  *
  * @author Brain
  */
-public class ClsPurchase implements IAction{
+public class ClsPayment implements IAction{
     private int _id;
-    private ClsClient _Client;
+    private ClsPurchase _Purchase;
+    private float _amount;
+    private Date _datePayment;
     private ClsLogin _Login;
-    private Date _datePurchase;
 
-    public ClsPurchase() {
+    public ClsPayment() {
     }
 
     public int getId() {
@@ -29,12 +30,28 @@ public class ClsPurchase implements IAction{
         this._id = _id;
     }
 
-    public ClsClient getClient() {
-        return _Client;
+    public ClsPurchase getPurchase() {
+        return _Purchase;
     }
 
-    public void setClient(ClsClient _Client) {
-        this._Client = _Client;
+    public void setPurchase(ClsPurchase _Purchase) {
+        this._Purchase = _Purchase;
+    }
+
+    public float getAmount() {
+        return _amount;
+    }
+
+    public void setAmount(float _amount) {
+        this._amount = _amount;
+    }
+
+    public Date getDatePayment() {
+        return _datePayment;
+    }
+
+    public void setDatePayment(Date _datePayment) {
+        this._datePayment = _datePayment;
     }
 
     public ClsLogin getLogin() {
@@ -43,14 +60,6 @@ public class ClsPurchase implements IAction{
 
     public void setLogin(ClsLogin _Login) {
         this._Login = _Login;
-    }
-
-    public Date getDatePurchase() {
-        return _datePurchase;
-    }
-
-    public void setDatePurchase(Date _datePurchase) {
-        this._datePurchase = _datePurchase;
     }
 
     @Override

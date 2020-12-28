@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package brain.model;
+package brain.models;
 
 import brain.controller.IAction;
 
@@ -11,11 +11,11 @@ import brain.controller.IAction;
  *
  * @author Brain
  */
-public class ClsAccessSetup implements  IAction{
+public class ClsClient implements IAction{
     private int _id;
-    private String _accessLevel;
+    private String _nom, _prenom, _contact, _addresse;
 
-    public ClsAccessSetup() {
+    public ClsClient() {
     }
 
     public int getId() {
@@ -26,12 +26,36 @@ public class ClsAccessSetup implements  IAction{
         this._id = _id;
     }
 
-    public String getAccessLevel() {
-        return _accessLevel;
+    public String getNom() {
+        return _nom;
     }
 
-    public void setAccessLevel(String _accessLevel) {
-        this._accessLevel = _accessLevel;
+    public void setNom(String _nom) {
+        this._nom = _nom;
+    }
+
+    public String getPrenom() {
+        return _prenom;
+    }
+
+    public void setPrenom(String _prenom) {
+        this._prenom = _prenom;
+    }
+
+    public String getContact() {
+        return _contact;
+    }
+
+    public void setContact(String _contact) {
+        this._contact = _contact;
+    }
+
+    public String getAddresse() {
+        return _addresse;
+    }
+
+    public void setAddresse(String _addresse) {
+        this._addresse = _addresse;
     }
 
     @Override
