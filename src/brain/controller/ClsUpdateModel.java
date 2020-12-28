@@ -5,20 +5,20 @@
  */
 package brain.controller;
 
-import brain.model.ClsAccessSetup;
-import brain.model.ClsCategory;
-import brain.model.ClsClient;
-import brain.model.ClsGamme;
-import brain.model.ClsLineProvidding;
-import brain.model.ClsLinePurchase;
-import brain.model.ClsLogin;
-import brain.model.ClsPayment;
-import brain.model.ClsProduct;
-import brain.model.ClsProvidding;
-import brain.model.ClsProvider;
-import brain.model.ClsPurchase;
-import brain.model.ClsQuantification;
-import brain.model.ClsSoft;
+import brain.models.ClsAccessSetup;
+import brain.models.ClsCategory;
+import brain.models.ClsClient;
+import brain.models.ClsGamme;
+import brain.models.ClsLineProvidding;
+import brain.models.ClsLinePurchase;
+import brain.models.ClsLogin;
+import brain.models.ClsPayment;
+import brain.models.ClsProduct;
+import brain.models.ClsProvidding;
+import brain.models.ClsProvider;
+import brain.models.ClsPurchase;
+import brain.models.ClsQuantification;
+import brain.models.ClsSoft;
 import java.sql.PreparedStatement;
 
 /**

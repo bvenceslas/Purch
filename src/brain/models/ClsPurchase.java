@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package brain.model;
+package brain.models;
 
 import brain.controller.IAction;
+import java.sql.Date;
 
 /**
  *
  * @author Brain
  */
-public class ClsCategory implements IAction{
+public class ClsPurchase implements IAction{
     private int _id;
-    private String _category;
-    private ClsGamme _Gamme;
+    private ClsClient _Client;
+    private ClsLogin _Login;
+    private Date _datePurchase;
 
-    public ClsCategory() {
+    public ClsPurchase() {
     }
 
     public int getId() {
@@ -27,20 +29,28 @@ public class ClsCategory implements IAction{
         this._id = _id;
     }
 
-    public String getCategory() {
-        return _category;
+    public ClsClient getClient() {
+        return _Client;
     }
 
-    public void setCategory(String _category) {
-        this._category = _category;
+    public void setClient(ClsClient _Client) {
+        this._Client = _Client;
     }
 
-    public ClsGamme getGamme() {
-        return _Gamme;
+    public ClsLogin getLogin() {
+        return _Login;
     }
 
-    public void setGamme(ClsGamme _Gamme) {
-        this._Gamme = _Gamme;
+    public void setLogin(ClsLogin _Login) {
+        this._Login = _Login;
+    }
+
+    public Date getDatePurchase() {
+        return _datePurchase;
+    }
+
+    public void setDatePurchase(Date _datePurchase) {
+        this._datePurchase = _datePurchase;
     }
 
     @Override

@@ -3,23 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package brain.model;
+package brain.models;
 
 import brain.controller.IAction;
-import java.sql.Date;
 
 /**
  *
  * @author Brain
  */
-public class ClsPayment implements IAction{
+public class ClsCategory implements IAction{
     private int _id;
-    private ClsPurchase _Purchase;
-    private float _amount;
-    private Date _datePayment;
-    private ClsLogin _Login;
+    private String _category;
+    private ClsGamme _Gamme;
 
-    public ClsPayment() {
+    public ClsCategory() {
     }
 
     public int getId() {
@@ -30,36 +27,20 @@ public class ClsPayment implements IAction{
         this._id = _id;
     }
 
-    public ClsPurchase getPurchase() {
-        return _Purchase;
+    public String getCategory() {
+        return _category;
     }
 
-    public void setPurchase(ClsPurchase _Purchase) {
-        this._Purchase = _Purchase;
+    public void setCategory(String _category) {
+        this._category = _category;
     }
 
-    public float getAmount() {
-        return _amount;
+    public ClsGamme getGamme() {
+        return _Gamme;
     }
 
-    public void setAmount(float _amount) {
-        this._amount = _amount;
-    }
-
-    public Date getDatePayment() {
-        return _datePayment;
-    }
-
-    public void setDatePayment(Date _datePayment) {
-        this._datePayment = _datePayment;
-    }
-
-    public ClsLogin getLogin() {
-        return _Login;
-    }
-
-    public void setLogin(ClsLogin _Login) {
-        this._Login = _Login;
+    public void setGamme(ClsGamme _Gamme) {
+        this._Gamme = _Gamme;
     }
 
     @Override

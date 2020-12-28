@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package brain.model;
+package brain.models;
 
 import brain.controller.IAction;
 
@@ -11,11 +11,11 @@ import brain.controller.IAction;
  *
  * @author Brain
  */
-public class ClsQuantification implements  IAction{
+public class ClsGamme implements IAction{
     private int _id;
-    private String _quantification;
+    private String _gamme;
 
-    public ClsQuantification() {
+    public ClsGamme() {
     }
 
     public int getId() {
@@ -26,12 +26,12 @@ public class ClsQuantification implements  IAction{
         this._id = _id;
     }
 
-    public String getQuantification() {
-        return _quantification;
+    public String getGamme() {
+        return _gamme;
     }
 
-    public void setQuantification(String _quantification) {
-        this._quantification = _quantification;
+    public void setGamme(String _gamme) {
+        this._gamme = _gamme;
     }
 
     @Override

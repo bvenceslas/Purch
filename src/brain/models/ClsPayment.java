@@ -3,19 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package brain.model;
+package brain.models;
 
 import brain.controller.IAction;
+import java.sql.Date;
 
 /**
  *
  * @author Brain
  */
-public class ClsProvider implements IAction{
+public class ClsPayment implements IAction{
     private int _id;
-    private String _nom, _prenom, _contact, _addresse;
+    private ClsPurchase _Purchase;
+    private float _amount;
+    private Date _datePayment;
+    private ClsLogin _Login;
 
-    public ClsProvider() {
+    public ClsPayment() {
     }
 
     public int getId() {
@@ -26,36 +30,36 @@ public class ClsProvider implements IAction{
         this._id = _id;
     }
 
-    public String getNom() {
-        return _nom;
+    public ClsPurchase getPurchase() {
+        return _Purchase;
     }
 
-    public void setNom(String _nom) {
-        this._nom = _nom;
+    public void setPurchase(ClsPurchase _Purchase) {
+        this._Purchase = _Purchase;
     }
 
-    public String getPrenom() {
-        return _prenom;
+    public float getAmount() {
+        return _amount;
     }
 
-    public void setPrenom(String _prenom) {
-        this._prenom = _prenom;
+    public void setAmount(float _amount) {
+        this._amount = _amount;
     }
 
-    public String getContact() {
-        return _contact;
+    public Date getDatePayment() {
+        return _datePayment;
     }
 
-    public void setContact(String _contact) {
-        this._contact = _contact;
+    public void setDatePayment(Date _datePayment) {
+        this._datePayment = _datePayment;
     }
 
-    public String getAddresse() {
-        return _addresse;
+    public ClsLogin getLogin() {
+        return _Login;
     }
 
-    public void setAddresse(String _addresse) {
-        this._addresse = _addresse;
+    public void setLogin(ClsLogin _Login) {
+        this._Login = _Login;
     }
 
     @Override
