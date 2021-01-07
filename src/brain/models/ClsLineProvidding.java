@@ -6,25 +6,36 @@
 package brain.models;
 
 import brain.controller.IAction;
+import java.sql.Date;
 
 /**
  *
  * @author Brain
  */
 public class ClsLineProvidding implements IAction{
-    private ClsProvidding _Providding;
+    private int id;
+    private ClsProvider _Provider;
     private ClsProduct _Product;
-    private float _qty, _price;
+    private Date _dateProvidding;
+    private float _qty;
 
     public ClsLineProvidding() {
     }
 
-    public ClsProvidding getProvidding() {
-        return _Providding;
+    public int getId() {
+        return id;
     }
 
-    public void setProvidding(ClsProvidding _Providding) {
-        this._Providding = _Providding;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ClsProvider getProvider() {
+        return _Provider;
+    }
+
+    public void setProvider(ClsProvider _Provider) {
+        this._Provider = _Provider;
     }
 
     public ClsProduct getProduct() {
@@ -35,6 +46,14 @@ public class ClsLineProvidding implements IAction{
         this._Product = _Product;
     }
 
+    public Date getDateProvidding() {
+        return _dateProvidding;
+    }
+
+    public void setDateProvidding(Date _dateProvidding) {
+        this._dateProvidding = _dateProvidding;
+    }
+
     public float getQty() {
         return _qty;
     }
@@ -42,15 +61,7 @@ public class ClsLineProvidding implements IAction{
     public void setQty(float _qty) {
         this._qty = _qty;
     }
-
-    public float getPrice() {
-        return _price;
-    }
-
-    public void setPrice(float _price) {
-        this._price = _price;
-    }
-
+    
     @Override
     public boolean saveData() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

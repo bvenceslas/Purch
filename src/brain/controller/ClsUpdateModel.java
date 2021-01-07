@@ -14,7 +14,6 @@ import brain.models.ClsLinePurchase;
 import brain.models.ClsLogin;
 import brain.models.ClsPayment;
 import brain.models.ClsProduct;
-import brain.models.ClsProvidding;
 import brain.models.ClsProvider;
 import brain.models.ClsPurchase;
 import brain.models.ClsQuantification;
@@ -67,11 +66,13 @@ public class ClsUpdateModel {
             return true;
         }else if (obj instanceof ClsLineProvidding) {
             ClsLineProvidding lineProv = (ClsLineProvidding)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PROVIDDING ?, ?, ?, ?");
-            ps.setInt(1, lineProv.getProvidding().getId());
-            ps.setString(2, lineProv.getProduct().getProduct());
-            ps.setFloat(3, lineProv.getQty());
-            ps.setFloat(4, lineProv.getPrice());
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PROVIDDING ?, ?, ?, ?, ?, ?");
+            ps.setInt(1, lineProv.getId());
+            ps.setString(2, lineProv.getProvider().getNom());
+            ps.setDate(3, lineProv.getDateProvidding());
+            ps.setString(4, lineProv.getProduct().getProduct());
+            ps.setFloat(5, lineProv.getQty());
+            ps.setFloat(6, lineProv.getProduct().getPrice());
             ps.executeUpdate();
             ps.close();
             return true;
@@ -114,15 +115,6 @@ public class ClsUpdateModel {
             ps.setFloat(4, prod.getPrice());
             ps.setFloat(5, prod.getStock());
             ps.setString(6, prod.getCategory().getCategory());
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } else if (obj instanceof ClsProvidding){            
-            ClsProvidding providding = (ClsProvidding)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PROVIDDING ?, ?, ?");
-            ps.setInt(1, providding.getId());
-            ps.setString(2, providding.getProvider().getNom());
-            ps.setDate(3, providding.getDateProvidding());
             ps.executeUpdate();
             ps.close();
             return true;
