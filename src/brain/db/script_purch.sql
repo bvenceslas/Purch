@@ -19,9 +19,9 @@ create table t_access_setup
 	)
 )
 
---login
+--user
 go
-create table t_login
+create table t_user
 (
 	username varchar(255) not null,
 	pwd varchar(255) not null,
@@ -217,7 +217,7 @@ references t_produit(id)
 alter table t_achat with check add constraint fk_client_achat foreign key(id_client) 
 references t_client(id)
 alter table t_achat with check add constraint fk_user_achat foreign key(username) 
-references t_login(username)
+references t_user(username)
 
 alter table t_line_achat with check add constraint fk_achat_line_achat foreign key(id_achat) 
 references t_achat(id)
@@ -227,7 +227,7 @@ references t_produit(id)
 alter table t_payment with check add constraint fk_achat_payment foreign key(id_achat) 
 references t_achat(id)
 alter table t_payment with check add constraint fk_user_payment foreign key(username) 
-references t_login(username)
+references t_user(username)
 
 
 -- Creation of Stored procedures
@@ -247,9 +247,9 @@ begin
 		update t_access_setup set access_level = @access_level where id = @id
 end
 
---login
+--user
 go
-create procedure sp_update_login
+create procedure sp_update_user
 (
 	@username varchar(255),
 	@pwd varchar(255),
@@ -257,10 +257,10 @@ create procedure sp_update_login
 )
 as
 begin
-	if not exists(select * from t_login where username = @username)
-		insert into t_login values (@username, @pwd, @access_level)
+	if not exists(select * from t_user where username = @username)
+		insert into t_user values (@username, @pwd, @access_level)
 	else
-		update t_login set pwd = @pwd, access_level = @access_level where username = @username
+		update t_user set pwd = @pwd, access_level = @access_level where username = @username
 end
 
 
@@ -388,7 +388,7 @@ end
 
 --line providing and provision
 go
-create procedure sp_update_ligne_provision 
+create procedure sp_update_line_provision 
 (
 	@id int,
 	@fournisseur varchar(255),

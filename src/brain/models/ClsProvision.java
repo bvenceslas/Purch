@@ -12,14 +12,14 @@ import java.sql.Date;
  *
  * @author Brain
  */
-public class ClsProvidding implements IAction{
+public class ClsProvision implements IAction{
     private int id;
-    private ClsProvider _Provider;
-    private ClsProduct _Product;
-    private Date _dateProvidding;
+    private ClsFournisseur _fournisseur;
+    private ClsProduit _Produit;
+    private Date _dateProvision;
     private float _qty;
 
-    public ClsProvidding() {
+    public ClsProvision() {
     }
 
     public int getId() {
@@ -30,28 +30,28 @@ public class ClsProvidding implements IAction{
         this.id = id;
     }
 
-    public ClsProvider getProvider() {
-        return _Provider;
+    public ClsFournisseur getFournisseur() {
+        return _fournisseur;
     }
 
-    public void setProvider(ClsProvider _Provider) {
-        this._Provider = _Provider;
+    public void setFournisseur(ClsFournisseur _fournisseur) {
+        this._fournisseur = _fournisseur;
     }
 
-    public ClsProduct getProduct() {
-        return _Product;
+    public ClsProduit getProduit() {
+        return _Produit;
     }
 
-    public void setProduct(ClsProduct _Product) {
-        this._Product = _Product;
+    public void setProduit(ClsProduit _Produit) {
+        this._Produit = _Produit;
     }
 
-    public Date getDateProvidding() {
-        return _dateProvidding;
+    public Date getDateProvision() {
+        return _dateProvision;
     }
 
-    public void setDateProvidding(Date _dateProvidding) {
-        this._dateProvidding = _dateProvidding;
+    public void setDateProvision(Date _dateProvision) {
+        this._dateProvision = _dateProvision;
     }
 
     public float getQty() {

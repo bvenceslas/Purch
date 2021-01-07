@@ -11,10 +11,10 @@ import brain.controller.IAction;
  *
  * @author Brain
  */
-public class ClsLogin implements IAction{
+public class ClsUser implements IAction{
     private String _username, _pwd, _accessLevel;
 
-    public ClsLogin() {
+    public ClsUser() {
     }
 
     public String getUsername() {

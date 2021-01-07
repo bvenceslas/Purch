@@ -11,13 +11,13 @@ import brain.controller.IAction;
  *
  * @author Brain
  */
-public class ClsProduct implements IAction{
+public class ClsProduit implements IAction{
     private int _id;
-    private String _product, _quantification;
-    private float _price, _stock;
+    private String _produit, _quantification;
+    private float _prix, _stock;
     private ClsCategory _Category;
 
-    public ClsProduct() {
+    public ClsProduit() {
     }
 
     public int getId() {
@@ -28,12 +28,12 @@ public class ClsProduct implements IAction{
         this._id = _id;
     }
 
-    public String getProduct() {
-        return _product;
+    public String getProduit() {
+        return _produit;
     }
 
-    public void setProduct(String _product) {
-        this._product = _product;
+    public void setProduit(String _produit) {
+        this._produit = _produit;
     }
 
     public String getQuantification() {
@@ -44,12 +44,12 @@ public class ClsProduct implements IAction{
         this._quantification = _quantification;
     }
 
-    public float getPrice() {
-        return _price;
+    public float getPrix() {
+        return _prix;
     }
 
-    public void setPrice(float _price) {
-        this._price = _price;
+    public void setPrix(float _prix) {
+        this._prix = _prix;
     }
 
     public float getStock() {
