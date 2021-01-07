@@ -31,21 +31,22 @@ public class PnlProvider extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jToolBar2 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jToolBar3 = new javax.swing.JToolBar();
         jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(new org.jdesktop.swingx.border.DropShadowBorder());
@@ -56,32 +57,14 @@ public class PnlProvider extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jLabel2.setText("ID");
-
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder1 = new org.jdesktop.swingx.border.DropShadowBorder();
-        dropShadowBorder1.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder1);
-
-        jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jLabel3.setText("Nom");
-
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
 
         jTextField2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
-        dropShadowBorder2.setShowRightShadow(false);
-        jTextField2.setBorder(dropShadowBorder2);
-
-        jLabel6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jLabel6.setText("Prenom");
-
-        jLabel7.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jLabel7.setText("Contact");
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder1 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder1.setShowRightShadow(false);
+        jTextField2.setBorder(dropShadowBorder1);
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -110,23 +93,85 @@ public class PnlProvider extends javax.swing.JPanel {
 
         jToolBar1.add(jToolBar3);
 
-        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
-        dropShadowBorder3.setShowRightShadow(false);
-        jTextField3.setBorder(dropShadowBorder3);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jTextField4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
-        dropShadowBorder4.setShowRightShadow(false);
-        jTextField4.setBorder(dropShadowBorder4);
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder2.setShowRightShadow(false);
+        jTextField4.setBorder(dropShadowBorder2);
 
         jTextField5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder3.setShowRightShadow(false);
+        jTextField5.setBorder(dropShadowBorder3);
+
+        jLabel7.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel7.setText("Contact");
+
+        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder4.setShowRightShadow(false);
+        jTextField1.setBorder(dropShadowBorder4);
+
+        jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel3.setText("Nom");
+
+        jLabel2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel2.setText("ID");
+
+        jLabel6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel6.setText("Prenom");
+
+        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder5 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder5.setShowRightShadow(false);
-        jTextField5.setBorder(dropShadowBorder5);
+        jTextField3.setBorder(dropShadowBorder5);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -151,18 +196,8 @@ public class PnlProvider extends javax.swing.JPanel {
                                 .addGap(0, 105, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(112, 112, 112)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -177,23 +212,9 @@ public class PnlProvider extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(11, 11, 11)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -209,6 +230,7 @@ public class PnlProvider extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
