@@ -12,14 +12,14 @@ import java.sql.Date;
  *
  * @author Brain
  */
-public class ClsLineProvidding implements IAction{
+public class ClsProvidding implements IAction{
     private int id;
     private ClsProvider _Provider;
     private ClsProduct _Product;
     private Date _dateProvidding;
     private float _qty;
 
-    public ClsLineProvidding() {
+    public ClsProvidding() {
     }
 
     public int getId() {

@@ -9,13 +9,12 @@ import brain.models.ClsAccessSetup;
 import brain.models.ClsCategory;
 import brain.models.ClsClient;
 import brain.models.ClsGamme;
-import brain.models.ClsLineProvidding;
-import brain.models.ClsLinePurchase;
+import brain.models.ClsProvidding;
+import brain.models.ClsPurchase;
 import brain.models.ClsLogin;
 import brain.models.ClsPayment;
 import brain.models.ClsProduct;
 import brain.models.ClsProvider;
-import brain.models.ClsPurchase;
 import brain.models.ClsQuantification;
 import brain.models.ClsSoft;
 import java.sql.PreparedStatement;
@@ -64,8 +63,8 @@ public class ClsUpdateModel {
             ps.executeUpdate();
             ps.close();
             return true;
-        }else if (obj instanceof ClsLineProvidding) {
-            ClsLineProvidding lineProv = (ClsLineProvidding)obj;
+        }else if (obj instanceof ClsProvidding) {
+            ClsProvidding lineProv = (ClsProvidding)obj;
             PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PROVIDDING ?, ?, ?, ?, ?, ?");
             ps.setInt(1, lineProv.getId());
             ps.setString(2, lineProv.getProvider().getNom());
@@ -76,13 +75,15 @@ public class ClsUpdateModel {
             ps.executeUpdate();
             ps.close();
             return true;
-        }else if (obj instanceof ClsLinePurchase) {
-            ClsLinePurchase linePurch = (ClsLinePurchase)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PURCHASE ?, ?, ?, ?");
-            ps.setInt(1, linePurch.getPurchase().getId());
-            ps.setString(2, linePurch.getProduct().getProduct());
-            ps.setFloat(3, linePurch.getQty());
-            ps.setFloat(4, linePurch.getReduction());
+        }else if (obj instanceof ClsPurchase) {
+            ClsPurchase linePurch = (ClsPurchase)obj;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PURCHASE ?, ?, ?, ?, ?, ?");
+            ps.setInt(1, linePurch.getId());
+            ps.setString(2, linePurch.getUser().getUsername());
+            ps.setDate(3, linePurch.getDatePurchase());
+            ps.setString(4, linePurch.getProduct().getProduct());
+            ps.setFloat(5, linePurch.getQty());
+            ps.setFloat(6, linePurch.getReduction());
             ps.executeUpdate();
             ps.close();
             return true;
@@ -126,16 +127,6 @@ public class ClsUpdateModel {
             ps.setString(3, provider.getPrenom());
             ps.setString(4, provider.getContact());
             ps.setString(5, provider.getAddresse());
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } else if (obj instanceof ClsPurchase) {
-            ClsPurchase purchase = (ClsPurchase)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PURCHASE ?, ?, ?, ?");
-            ps.setInt(1, purchase.getId());
-            ps.setString(2, purchase.getClient().getNom());
-            ps.setString(3, purchase.getLogin().getUsername());
-            ps.setDate(4, purchase.getDatePurchase());
             ps.executeUpdate();
             ps.close();
             return true;

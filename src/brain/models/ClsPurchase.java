@@ -13,44 +13,70 @@ import java.sql.Date;
  * @author Brain
  */
 public class ClsPurchase implements IAction{
-    private int _id;
-    private ClsClient _Client;
-    private ClsLogin _Login;
-    private Date _datePurchase;
+    private int id;
+    private ClsClient _client;
+    private Date datePurchase;
+    private ClsProduct _Product;
+    private ClsLogin user;
+    private float _qty, _reduction;
 
     public ClsPurchase() {
     }
 
     public int getId() {
-        return _id;
+        return id;
     }
 
-    public void setId(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ClsClient getClient() {
-        return _Client;
+        return _client;
     }
 
-    public void setClient(ClsClient _Client) {
-        this._Client = _Client;
-    }
-
-    public ClsLogin getLogin() {
-        return _Login;
-    }
-
-    public void setLogin(ClsLogin _Login) {
-        this._Login = _Login;
+    public void setClient(ClsClient _client) {
+        this._client = _client;
     }
 
     public Date getDatePurchase() {
-        return _datePurchase;
+        return datePurchase;
     }
 
-    public void setDatePurchase(Date _datePurchase) {
-        this._datePurchase = _datePurchase;
+    public void setDatePurchase(Date datePurchase) {
+        this.datePurchase = datePurchase;
+    }
+
+    public ClsProduct getProduct() {
+        return _Product;
+    }
+
+    public void setProduct(ClsProduct _Product) {
+        this._Product = _Product;
+    }
+
+    public float getQty() {
+        return _qty;
+    }
+
+    public void setQty(float _qty) {
+        this._qty = _qty;
+    }
+
+    public float getReduction() {
+        return _reduction;
+    }
+
+    public void setReduction(float _reduction) {
+        this._reduction = _reduction;
+    }
+
+    public ClsLogin getUser() {
+        return user;
+    }
+
+    public void setUser(ClsLogin user) {
+        this.user = user;
     }
 
     @Override
