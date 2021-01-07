@@ -395,7 +395,6 @@ create procedure sp_update_line_providding
 	@id int,
 	@provider varchar(255),
 	@date_providding date,
-	@id_providding int,
 	@product  varchar(255),
 	@qty float,
 	@price float
@@ -437,7 +436,6 @@ create procedure sp_update_line_purchase
 	@client varchar(255),
 	@username varchar(255),
 	@date_purchase date,
-	@id_purchase int,
 	@product varchar(255),
 	@qty float,
 	@reduction float
