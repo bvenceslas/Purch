@@ -37,7 +37,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txt_username = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
@@ -73,12 +73,12 @@ public class DlgLoginUser extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel4.setText("Connectez-vous et bénéficiez des merveilleuses fonctionnqlités de notre système.");
 
-        txt_username.setFont(new java.awt.Font("Lato", 0, 20)); // NOI18N
-        txt_username.setForeground(new java.awt.Color(0, 102, 153));
-        txt_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsername.setFont(new java.awt.Font("Lato", 0, 20)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(0, 102, 153));
+        txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        txt_username.setBorder(dropShadowBorder2);
+        txtUsername.setBorder(dropShadowBorder2);
 
         jButton2.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 102, 153));
@@ -141,7 +141,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(0, 17, Short.MAX_VALUE))
@@ -164,7 +164,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,6 +261,6 @@ public class DlgLoginUser extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txt_username;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

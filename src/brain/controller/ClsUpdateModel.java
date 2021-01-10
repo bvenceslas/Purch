@@ -9,12 +9,12 @@ import brain.models.ClsAccessSetup;
 import brain.models.ClsCategory;
 import brain.models.ClsClient;
 import brain.models.ClsGamme;
-import brain.models.ClsProvidding;
-import brain.models.ClsPurchase;
-import brain.models.ClsLogin;
+import brain.models.ClsProvision;
+import brain.models.ClsAchat;
+import brain.models.ClsUser;
 import brain.models.ClsPayment;
-import brain.models.ClsProduct;
-import brain.models.ClsProvider;
+import brain.models.ClsProduit;
+import brain.models.ClsFournisseur;
 import brain.models.ClsQuantification;
 import brain.models.ClsSoft;
 import java.sql.PreparedStatement;
@@ -24,6 +24,14 @@ import java.sql.PreparedStatement;
  * @author Brain
  */
 public class ClsUpdateModel {
+
+    public static boolean deleteData(String dbTable, int tbId) throws ClassNotFoundException, Exception{
+        PreparedStatement ps = DbConnect.connectDb().prepareStatement("DELETE FROM "+dbTable+" WHERE id = ?");
+            ps.setInt(1, tbId);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+    }
     
     public static boolean updateData(Object obj) throws ClassNotFoundException, Exception{
         if (obj instanceof ClsAccessSetup) {
@@ -46,12 +54,11 @@ public class ClsUpdateModel {
             return true;
         } else if (obj instanceof ClsClient) {
             ClsClient cli = (ClsClient)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_CLIENT ?, ?, ?, ?, ?");
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_CLIENT ?, ?, ?, ?");
             ps.setInt(1, cli.getId());
             ps.setString(2, cli.getNom());
             ps.setString(3, cli.getPrenom());
             ps.setString(4, cli.getContact());
-            ps.setString(5, cli.getAddresse());
             ps.executeUpdate();
             ps.close();
             return true;
@@ -63,33 +70,33 @@ public class ClsUpdateModel {
             ps.executeUpdate();
             ps.close();
             return true;
-        }else if (obj instanceof ClsProvidding) {
-            ClsProvidding lineProv = (ClsProvidding)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PROVIDDING ?, ?, ?, ?, ?, ?");
+        }else if (obj instanceof ClsProvision) {
+            ClsProvision lineProv = (ClsProvision)obj;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PROVISION ?, ?, ?, ?, ?, ?");
             ps.setInt(1, lineProv.getId());
-            ps.setString(2, lineProv.getProvider().getNom());
-            ps.setDate(3, lineProv.getDateProvidding());
-            ps.setString(4, lineProv.getProduct().getProduct());
+            ps.setString(2, lineProv.getFournisseur().getNom());
+            ps.setDate(3, lineProv.getDateProvision());
+            ps.setString(4, lineProv.getProduit().getProduit());
             ps.setFloat(5, lineProv.getQty());
-            ps.setFloat(6, lineProv.getProduct().getPrice());
+            ps.setFloat(6, lineProv.getProduit().getPrix());
             ps.executeUpdate();
             ps.close();
             return true;
-        }else if (obj instanceof ClsPurchase) {
-            ClsPurchase linePurch = (ClsPurchase)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_PURCHASE ?, ?, ?, ?, ?, ?");
-            ps.setInt(1, linePurch.getId());
-            ps.setString(2, linePurch.getUser().getUsername());
-            ps.setDate(3, linePurch.getDatePurchase());
-            ps.setString(4, linePurch.getProduct().getProduct());
-            ps.setFloat(5, linePurch.getQty());
-            ps.setFloat(6, linePurch.getReduction());
+        }else if (obj instanceof ClsAchat) {
+            ClsAchat lineAch = (ClsAchat)obj;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LINE_ACHAT ?, ?, ?, ?, ?, ?");
+            ps.setInt(1, lineAch.getId());
+            ps.setString(2, lineAch.getUser().getUsername());
+            ps.setDate(3, lineAch.getDateAchat());
+            ps.setString(4, lineAch.getProduit().getProduit());
+            ps.setFloat(5, lineAch.getQty());
+            ps.setFloat(6, lineAch.getReduction());
             ps.executeUpdate();
             ps.close();
             return true;
-        } else if (obj instanceof ClsLogin) {
-            ClsLogin log = (ClsLogin)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_LOGIN ?, ?, ?");
+        } else if (obj instanceof ClsUser) {
+            ClsUser log = (ClsUser)obj;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_USER ?, ?, ?");
             ps.setString(1, log.getUsername());
             ps.setString(2, log.getPwd());
             ps.setString(3, log.getAccessLevel());
@@ -100,33 +107,32 @@ public class ClsUpdateModel {
             ClsPayment pay = (ClsPayment)obj;
             PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PAYMENT ?, ?, ?, ?, ?");
             ps.setInt(1, pay.getId());
-            ps.setInt(2, pay.getPurchase().getId());
+            ps.setInt(2, pay.getAchat().getId());
             ps.setFloat(3, pay.getAmount());
             ps.setDate(4, pay.getDatePayment());
             ps.setString(5, pay.getLogin().getUsername());
             ps.executeUpdate();
             ps.close();
             return true;
-        } else if (obj instanceof ClsProduct) {
-            ClsProduct prod = (ClsProduct)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PRODUCT ?, ?, ?, ?, ?, ?");
+        } else if (obj instanceof ClsProduit) {
+            ClsProduit prod = (ClsProduit)obj;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PRODUIT ?, ?, ?, ?, ?, ?");
             ps.setInt(1, prod.getId());
-            ps.setString(2, prod.getProduct());
+            ps.setString(2, prod.getProduit());
             ps.setString(3, prod.getQuantification());
-            ps.setFloat(4, prod.getPrice());
+            ps.setFloat(4, prod.getPrix());
             ps.setFloat(5, prod.getStock());
             ps.setString(6, prod.getCategory().getCategory());
             ps.executeUpdate();
             ps.close();
             return true;
-        } else if (obj instanceof ClsProvider) {
-            ClsProvider provider = (ClsProvider)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PROVIDER ?, ?, ?, ?, ?");
-            ps.setInt(1, provider.getId());
-            ps.setString(2, provider.getNom());
-            ps.setString(3, provider.getPrenom());
-            ps.setString(4, provider.getContact());
-            ps.setString(5, provider.getAddresse());
+        } else if (obj instanceof ClsFournisseur) {
+            ClsFournisseur fourn = (ClsFournisseur)obj;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_FOURNISSEUR ?, ?, ?, ?");
+            ps.setInt(1, fourn.getId());
+            ps.setString(2, fourn.getNom());
+            ps.setString(3, fourn.getPrenom());
+            ps.setString(4, fourn.getContact());
             ps.executeUpdate();
             ps.close();
             return true;

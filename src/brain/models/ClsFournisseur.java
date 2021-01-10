@@ -11,11 +11,11 @@ import brain.controller.IAction;
  *
  * @author Brain
  */
-public class ClsProvider implements IAction{
+public class ClsFournisseur implements IAction{
     private int _id;
-    private String _nom, _prenom, _contact, _addresse;
+    private String _nom, _prenom, _contact;
 
-    public ClsProvider() {
+    public ClsFournisseur() {
     }
 
     public int getId() {
@@ -48,14 +48,6 @@ public class ClsProvider implements IAction{
 
     public void setContact(String _contact) {
         this._contact = _contact;
-    }
-
-    public String getAddresse() {
-        return _addresse;
-    }
-
-    public void setAddresse(String _addresse) {
-        this._addresse = _addresse;
     }
 
     @Override

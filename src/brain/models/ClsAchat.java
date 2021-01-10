@@ -12,15 +12,15 @@ import java.sql.Date;
  *
  * @author Brain
  */
-public class ClsPurchase implements IAction{
+public class ClsAchat implements IAction{
     private int id;
     private ClsClient _client;
-    private Date datePurchase;
-    private ClsProduct _Product;
-    private ClsLogin user;
+    private Date _dateAchat;
+    private ClsProduit _Produit;
+    private ClsUser user;
     private float _qty, _reduction;
 
-    public ClsPurchase() {
+    public ClsAchat() {
     }
 
     public int getId() {
@@ -39,20 +39,20 @@ public class ClsPurchase implements IAction{
         this._client = _client;
     }
 
-    public Date getDatePurchase() {
-        return datePurchase;
+    public Date getDateAchat() {
+        return _dateAchat;
     }
 
-    public void setDatePurchase(Date datePurchase) {
-        this.datePurchase = datePurchase;
+    public void setDateAchat(Date _dateAchat) {
+        this._dateAchat = _dateAchat;
     }
 
-    public ClsProduct getProduct() {
-        return _Product;
+    public ClsProduit getProduit() {
+        return _Produit;
     }
 
-    public void setProduct(ClsProduct _Product) {
-        this._Product = _Product;
+    public void setProduit(ClsProduit _Produit) {
+        this._Produit = _Produit;
     }
 
     public float getQty() {
@@ -71,11 +71,11 @@ public class ClsPurchase implements IAction{
         this._reduction = _reduction;
     }
 
-    public ClsLogin getUser() {
+    public ClsUser getUser() {
         return user;
     }
 
-    public void setUser(ClsLogin user) {
+    public void setUser(ClsUser user) {
         this.user = user;
     }
 

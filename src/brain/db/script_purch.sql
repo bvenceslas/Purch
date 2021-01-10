@@ -19,9 +19,9 @@ create table t_access_setup
 	)
 )
 
---login
+--user
 go
-create table t_login
+create table t_user
 (
 	username varchar(255) not null,
 	pwd varchar(255) not null,
@@ -82,14 +82,14 @@ create table t_quantification
 	)
 )
 
---product
+--produit
 go
-create table t_product
+create table t_produit
 (
 	id int not null,
-	product varchar(255),
+	produit varchar(255),
 	quantification text, 
-	price float,
+	prix float,
 	stock float default 0,
 	id_categoy int not null,
 	primary key clustered
@@ -98,15 +98,14 @@ create table t_product
 	)
 )
 
---provider
+--fournisseur
 go
-create table t_provider
+create table t_fournisseur
 (
 	id int not null,
 	nom varchar(50), 
 	prenom varchar(50), 
-	contact varchar(13), 
-	addresse varchar(255),
+	contact varchar(13),
 	primary key clustered
 	(
 		id
@@ -121,7 +120,6 @@ create table t_client
 	nom varchar(50), 
 	prenom varchar(50), 
 	contact varchar(13), 
-	addresse varchar(255),
 	primary key clustered
 	(
 		id
@@ -129,13 +127,13 @@ create table t_client
 )
 
 
---providding
+--provision
 go
-create table t_providding 
+create table t_provision 
 (
 	id int not null,
-	id_provider int not null,
-	date_providding date,
+	id_fournisseur int not null,
+	date_provision date,
 	primary key clustered
 	(
 		id asc
@@ -144,45 +142,45 @@ create table t_providding
 
 --line providing
 go
-create table t_line_providding 
+create table t_ligne_provision 
 (
-	id_providding int not null,
-	id_product int not null,
+	id_provision int not null,
+	id_produit int not null,
 	qty float,
 	price float,
 	primary key clustered
 	(
-		id_providding,
-		id_product
+		id_provision,
+		id_produit
 	)
 )
 
--- purchase
+-- achat
 go
-create table t_purchase
+create table t_achat
 (
 	id int not null,
 	id_client int not null,
 	username varchar(255) not null,
-	date_purchase date,
+	date_achat date,
 	primary key clustered
 	(
 		id asc
 	)
 )
 
--- line purchase
+-- line achat
 go
-create table t_line_purchase
+create table t_line_achat
 (
-	id_purchase int not null,
-	id_product int not null,
+	id_achat int not null,
+	id_produit int not null,
 	qty float,
 	reduction float,
 	primary key clustered
 	(
-		id_purchase,
-		id_product
+		id_achat,
+		id_produit
 	)
 )
 
@@ -191,8 +189,8 @@ go
 create table t_payment
 (
 	id int not null,
-	id_purchase int not null,
-	amount float,
+	id_achat int not null,
+	montant float,
 	date_payment date,
 	username varchar(255) not null,
 	primary key clustered
@@ -206,30 +204,30 @@ create table t_payment
 
 alter table t_category with check add constraint fk_gamme_category foreign key(id_gamme) references t_gamme(id)
 
-alter table t_product with check add constraint fk_category_product foreign key(id_categoy) references t_category(id)
+alter table t_produit with check add constraint fk_category_produit foreign key(id_categoy) references t_category(id)
 
-alter table t_providding with check add constraint fk_provider_providding foreign key(id_provider) 
-references t_provider(id)
+alter table t_provision with check add constraint fk_fournisseur_provision foreign key(id_fournisseur) 
+references t_fournisseur(id)
 
-alter table t_line_providding with check add constraint fk_providding_line_providding foreign key(id_providding) 
-references t_providding(id)
-alter table t_line_providding with check add constraint fk_product_line_providding foreign key(id_product) 
-references t_product(id)
+alter table t_ligne_provision with check add constraint fk_provision_ligne_provision foreign key(id_provision) 
+references t_provision(id)
+alter table t_ligne_provision with check add constraint fk_produit_ligne_provision foreign key(id_produit) 
+references t_produit(id)
 
-alter table t_purchase with check add constraint fk_client_purchase foreign key(id_client) 
+alter table t_achat with check add constraint fk_client_achat foreign key(id_client) 
 references t_client(id)
-alter table t_purchase with check add constraint fk_user_purchase foreign key(username) 
-references t_login(username)
+alter table t_achat with check add constraint fk_user_achat foreign key(username) 
+references t_user(username)
 
-alter table t_line_purchase with check add constraint fk_purchase_line_purchase foreign key(id_purchase) 
-references t_purchase(id)
-alter table t_line_purchase with check add constraint fk_product_line_purchase foreign key(id_product) 
-references t_product(id)
+alter table t_line_achat with check add constraint fk_achat_line_achat foreign key(id_achat) 
+references t_achat(id)
+alter table t_line_achat with check add constraint fk_produit_line_achat foreign key(id_produit) 
+references t_produit(id)
 
-alter table t_payment with check add constraint fk_purchase_payment foreign key(id_purchase) 
-references t_purchase(id)
+alter table t_payment with check add constraint fk_achat_payment foreign key(id_achat) 
+references t_achat(id)
 alter table t_payment with check add constraint fk_user_payment foreign key(username) 
-references t_login(username)
+references t_user(username)
 
 
 -- Creation of Stored procedures
@@ -249,9 +247,9 @@ begin
 		update t_access_setup set access_level = @access_level where id = @id
 end
 
---login
+--user
 go
-create procedure sp_update_login
+create procedure sp_update_user
 (
 	@username varchar(255),
 	@pwd varchar(255),
@@ -259,10 +257,10 @@ create procedure sp_update_login
 )
 as
 begin
-	if not exists(select * from t_login where username = @username)
-		insert into t_login values (@username, @pwd, @access_level)
+	if not exists(select * from t_user where username = @username)
+		insert into t_user values (@username, @pwd, @access_level)
 	else
-		update t_login set pwd = @pwd, access_level = @access_level where username = @username
+		update t_user set pwd = @pwd, access_level = @access_level where username = @username
 end
 
 
@@ -330,12 +328,12 @@ begin
 end
 
 
---product
+--produit
 go
-create procedure sp_update_product
+create procedure sp_update_produit
 (
 	@id int,
-	@product varchar(255),
+	@produit varchar(255),
 	@quantification text, 
 	@price float,
 	@stock float,
@@ -344,15 +342,15 @@ create procedure sp_update_product
 as
 begin
 	declare @id_category int = (select id from t_category where category = @categoy)
-	if not exists(select * from t_product where id = @id)
-		insert into t_product values(@id, @product, @quantification, @price, @stock, @id_category)
+	if not exists(select * from t_produit where id = @id)
+		insert into t_produit values(@id, @produit, @quantification, @price, @stock, @id_category)
 	else
-		update t_product set product = @product, quantification = @quantification, price = @price, stock = @stock, id_categoy = @id_category where id = @id
+		update t_produit set produit = @produit, quantification = @quantification, price = @price, stock = @stock, id_categoy = @id_category where id = @id
 end
 
---provider
+--fournisseur
 go
-create procedure sp_update_provider
+create procedure sp_update_fournisseur
 (
 	@id int,
 	@nom varchar(50), 
@@ -362,10 +360,10 @@ create procedure sp_update_provider
 )
 as
 begin
-	if not exists(select * from t_provider where id = @id)
-		insert into t_provider values(@id, @nom, @prenom, @contact, @addresse)
+	if not exists(select * from t_fournisseur where id = @id)
+		insert into t_fournisseur values(@id, @nom, @prenom, @contact, @addresse)
 	else
-		update t_provider set nom = @nom, prenom = @prenom, contact = @contact, addresse = @addresse where id = @id
+		update t_fournisseur set nom = @nom, prenom = @prenom, contact = @contact, addresse = @addresse where id = @id
 end
 
 
@@ -388,55 +386,55 @@ begin
 end
 
 
---line providing and providding
+--line providing and provision
 go
-create procedure sp_update_line_providding 
+create procedure sp_update_line_provision 
 (
 	@id int,
-	@provider varchar(255),
-	@date_providding date,
-	@product  varchar(255),
+	@fournisseur varchar(255),
+	@date_provision date,
+	@produit  varchar(255),
 	@qty float,
 	@price float
 )
 as
 begin
-	-- get provider id
-	declare @id_provider int = (select id  from t_provider where concat(nom, ' ', prenom) = @provider)
-	-- get product id
-	declare @id_product int = (select id  from t_product where product = @product)
+	-- get fournisseur id
+	declare @id_fournisseur int = (select id  from t_fournisseur where concat(nom, ' ', prenom) = @fournisseur)
+	-- get produit id
+	declare @id_produit int = (select id  from t_produit where produit = @produit)
 
-	-- first the providding table
-	if not exists(select * from t_providding where id = @id)
-		insert into t_providding values (@id, @id_provider, @date_providding)
+	-- first the provision table
+	if not exists(select * from t_provision where id = @id)
+		insert into t_provision values (@id, @id_fournisseur, @date_provision)
 	else
-		update t_providding set id_provider = @id_provider, date_providding = @date_providding where id = @id
+		update t_provision set id_fournisseur = @id_fournisseur, date_provision = @date_provision where id = @id
 
-	-- now the line_providding
-	if not exists (select * from t_line_providding where id_providding = @id and id_product = @id_product)
+	-- now the ligne_provision
+	if not exists (select * from t_ligne_provision where id_provision = @id and id_produit = @id_produit)
 		begin
-			insert into t_line_providding values(@id, @id_product, @qty, @price)
-			update t_product set stock = (stock + @qty) where id = @id_product
+			insert into t_ligne_provision values(@id, @id_produit, @qty, @price)
+			update t_produit set stock = (stock + @qty) where id = @id_produit
 		end
 	else
 		begin
-			update t_line_providding set qty = @qty, price = @price where id_providding = @id and id_product = @id_product
+			update t_ligne_provision set qty = @qty, price = @price where id_provision = @id and id_produit = @id_produit
 			-- decrease the last value of the quantity
-			declare @qty_init float = (select qty from t_line_providding where id_providding = @id and id_product = @id_product)
-			update t_product set stock = (stock - @qty_init) + @qty where id = @id_product
+			declare @qty_init float = (select qty from t_ligne_provision where id_provision = @id and id_produit = @id_produit)
+			update t_produit set stock = (stock - @qty_init) + @qty where id = @id_produit
 		end
 end
 
 
--- line purchase and purchase
+-- line achat and achat
 go
-create procedure sp_update_line_purchase
+create procedure sp_update_line_achat
 (
 	@id int,
 	@client varchar(255),
 	@username varchar(255),
-	@date_purchase date,
-	@product varchar(255),
+	@date_achat date,
+	@produit varchar(255),
 	@qty float,
 	@reduction float
 )
@@ -444,30 +442,30 @@ as
 begin
 	-- get client id
 	declare @id_client int = (select id  from t_client where concat(nom, ' ', prenom) = @client)
-	-- get product id
-	declare @id_product int = (select id  from t_product where product = @product)
-	-- get the stock of the product
-	declare @actual_stock float = (select stock from t_product where id = @id_product)
+	-- get produit id
+	declare @id_produit int = (select id  from t_produit where produit = @produit)
+	-- get the stock of the produit
+	declare @actual_stock float = (select stock from t_produit where id = @id_produit)
 		if @qty <= @actual_stock
 			begin
-				-- first the purchase table
-				if not exists(select * from t_purchase where id = @id)
-					insert into t_purchase values (@id, @id_client, @date_purchase, @username)
+				-- first the achat table
+				if not exists(select * from t_achat where id = @id)
+					insert into t_achat values (@id, @id_client, @date_achat, @username)
 				else
-					update t_purchase set id_client = @id_client, date_purchase = @date_purchase, username = @username where id = @id
+					update t_achat set id_client = @id_client, date_achat = @date_achat, username = @username where id = @id
 
-				-- now the line_purchase
-				if not exists (select * from t_line_purchase where id_purchase = @id and id_product = @id_product)
+				-- now the line_achat
+				if not exists (select * from t_line_achat where id_achat = @id and id_produit = @id_produit)
 					begin
-						insert into t_line_purchase values(@id, @id_product, @qty, @reduction)
-						update t_product set stock = (stock - @qty) where id = @id_product
+						insert into t_line_achat values(@id, @id_produit, @qty, @reduction)
+						update t_produit set stock = (stock - @qty) where id = @id_produit
 					end
 				else
 					begin
-						update t_line_purchase set qty = @qty, reduction = @reduction where id_purchase = @id and id_product = @id_product
+						update t_line_achat set qty = @qty, reduction = @reduction where id_achat = @id and id_produit = @id_produit
 						-- increase the value of the quantity
-						declare @qty_init float = (select qty from t_line_purchase where id_purchase = @id and id_product = @id_product)
-						update t_product set stock = (stock + @qty_init) - @qty where id = @id_product
+						declare @qty_init float = (select qty from t_line_achat where id_achat = @id and id_produit = @id_produit)
+						update t_produit set stock = (stock + @qty_init) - @qty where id = @id_produit
 					end
 			end
 		else
@@ -480,7 +478,7 @@ go
 create procedure sp_update_payment
 (
 	@id int,
-	@id_purchase int,
+	@id_achat int,
 	@amount float,
 	@date_payment date,
 	@username varchar(255)
@@ -488,7 +486,7 @@ create procedure sp_update_payment
 as
 begin
 	if not exists(select * from t_payment where id = @id)
-		insert into t_payment values(@id, @id_purchase, @amount, @date_payment, @username)
+		insert into t_payment values(@id, @id_achat, @amount, @date_payment, @username)
 	else
-		update t_payment set id_purchase = @id_purchase, amount = @amount, date_payment = @date_payment, username = @username where id = @id
+		update t_payment set id_achat = @id_achat, amount = @amount, date_payment = @date_payment, username = @username where id = @id
 end
