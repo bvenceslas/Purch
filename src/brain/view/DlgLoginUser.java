@@ -18,9 +18,19 @@ public class DlgLoginUser extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        checkEntries();
     }
     
-    
+    void checkEntries(){
+        if (txtUsername.getText().isEmpty() || 
+                txtPassword.getText().isEmpty() || 
+                    txtUsername.getText().length() < 5 || 
+                        txtPassword.getText().length() <= 6) {
+                    btnLogin.setEnabled(false);
+        }else {
+                btnLogin.setEnabled(true);
+        } 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +48,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
@@ -79,13 +89,18 @@ public class DlgLoginUser extends javax.swing.JDialog {
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
         txtUsername.setBorder(dropShadowBorder2);
+        txtUsername.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtUsernameCaretUpdate(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 102, 153));
-        jButton2.setText("Suivant");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(0, 102, 153));
+        btnLogin.setText("Suivant");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -101,6 +116,11 @@ public class DlgLoginUser extends javax.swing.JDialog {
         txtPassword.setBorder(dropShadowBorder3);
         txtPassword.setCaretColor(new java.awt.Color(0, 102, 153));
         txtPassword.setEchoChar('\u2022');
+        txtPassword.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtPasswordCaretUpdate(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/brain/view/img/eye.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -121,7 +141,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -172,7 +192,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
                 .addGap(30, 30, 30)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -194,10 +214,10 @@ public class DlgLoginUser extends javax.swing.JDialog {
     System.exit(7);
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         this.setVisible(false);
         new FrmHome().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
         txtPassword.setEchoChar('\u0000');
@@ -206,6 +226,14 @@ public class DlgLoginUser extends javax.swing.JDialog {
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
         txtPassword.setEchoChar('\u2022');
     }//GEN-LAST:event_jLabel6MouseExited
+
+    private void txtUsernameCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtUsernameCaretUpdate
+        checkEntries();
+    }//GEN-LAST:event_txtUsernameCaretUpdate
+
+    private void txtPasswordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPasswordCaretUpdate
+    checkEntries();
+    }//GEN-LAST:event_txtPasswordCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -251,8 +279,8 @@ public class DlgLoginUser extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
