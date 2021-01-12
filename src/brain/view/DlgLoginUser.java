@@ -5,6 +5,11 @@
  */
 package brain.view;
 
+import brain.controller.DbConnect;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brain
@@ -24,12 +29,32 @@ public class DlgLoginUser extends javax.swing.JDialog {
     void checkEntries(){
         if (txtUsername.getText().isEmpty() || 
                 txtPassword.getText().isEmpty() || 
-                    txtUsername.getText().length() < 5 || 
-                        txtPassword.getText().length() <= 6) {
+                    txtUsername.getText().length() < 3 || 
+                        txtPassword.getText().length() < 5) {
                     btnLogin.setEnabled(false);
         }else {
                 btnLogin.setEnabled(true);
         } 
+    }
+    
+    private void loginApp(String username, String password){
+        try {
+            ResultSet rs = null;
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("SELECT * FROM t_User WHERE username = ? AND pwd = ?");
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.executeQuery();
+            if(rs.next()){
+                if(rs.getString("username").equals(username) && rs.getString("password").equals(password)){
+                    new FrmHome().setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null, "Username ou mot de passe incorrect", "login connection error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Login eror found: \n" + e.getMessage(), "login connection error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
 
     /**
@@ -215,8 +240,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        this.setVisible(false);
-        new FrmHome().setVisible(true);
+        loginApp(txtUsername.getText(), txtPassword.getText());
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
