@@ -25,36 +25,36 @@ public class DlgLoginUser extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         checkEntries();
     }
-    
-    void checkEntries(){
-        if (txtUsername.getText().isEmpty() || 
-                txtPassword.getText().isEmpty() || 
-                    txtUsername.getText().length() < 3 || 
-                        txtPassword.getText().length() < 5) {
-                    btnLogin.setEnabled(false);
-        }else {
-                btnLogin.setEnabled(true);
-        } 
+
+    void checkEntries() {
+        if (txtUsername.getText().isEmpty()
+                || txtPassword.getText().isEmpty()
+                || txtUsername.getText().length() < 3
+                || txtPassword.getText().length() < 5) {
+            btnLogin.setEnabled(false);
+        } else {
+            btnLogin.setEnabled(true);
+        }
     }
-    
-    private void loginApp(String username, String password){
+
+    void loginApp(String username, String pwd) {
         try {
-            ResultSet rs = null;
             PreparedStatement ps = DbConnect.connectDb().prepareStatement("SELECT * FROM t_User WHERE username = ? AND pwd = ?");
             ps.setString(1, username);
-            ps.setString(2, password);
-            ps.executeQuery();
-            if(rs.next()){
-                if(rs.getString("username").equals(username) && rs.getString("password").equals(password)){
+            ps.setString(2, pwd);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                if (rs.getString("username").equals(username) && rs.getString("pwd").equals(pwd)) {
                     new FrmHome().setVisible(true);
-                }else {
-                    JOptionPane.showMessageDialog(null, "Username ou mot de passe incorrect", "login connection error", JOptionPane.ERROR_MESSAGE);
-                }
+                    this.setVisible(false);
+                } 
+            }else {
+                JOptionPane.showMessageDialog(null, "Username ou mot de passe incorrect", "login connection error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Login eror found: \n" + e.getMessage(), "login connection error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Login error found: \n" + e.getMessage(), "login connection error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }
 
     /**
@@ -231,9 +231,9 @@ public class DlgLoginUser extends javax.swing.JDialog {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -252,7 +252,7 @@ public class DlgLoginUser extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-    System.exit(7);
+        System.exit(7);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -272,11 +272,11 @@ public class DlgLoginUser extends javax.swing.JDialog {
     }//GEN-LAST:event_txtUsernameCaretUpdate
 
     private void txtPasswordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPasswordCaretUpdate
-    checkEntries();
+        checkEntries();
     }//GEN-LAST:event_txtPasswordCaretUpdate
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-    new DlgConfig(new javax.swing.JFrame(), true).setVisible(true);
+        new DlgConfig(new javax.swing.JFrame(), true).setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
