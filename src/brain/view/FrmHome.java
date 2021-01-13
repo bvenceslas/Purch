@@ -6,8 +6,10 @@
 package brain.view;
 
 import brain.controller.ClsHelper;
+import brain.view.panel.PnlAchat;
 import brain.view.panel.PnlProduct;
-import brain.view.panel.PnlProvidding;
+import brain.view.panel.PnlApprovisionnement;
+import brain.view.panel.PnlPayment;
 import brain.view.panel.PnlUser;
 
 /**
@@ -73,6 +75,11 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel3.setText("Paiements");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -81,6 +88,11 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel4.setText("Achats");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,12 +273,20 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        ClsHelper.load_Panel(PnlOne, new PnlProvidding());
+        ClsHelper.load_Panel(PnlOne, new PnlApprovisionnement());
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         ClsHelper.load_Panel(PnlOne, new PnlUser());
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        ClsHelper.load_Panel(PnlOne, new PnlPayment());
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        ClsHelper.load_Panel(PnlOne, new PnlAchat());
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

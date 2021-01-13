@@ -9,12 +9,12 @@ package brain.view.panel;
  *
  * @author Brain
  */
-public class PnlProvidding extends javax.swing.JPanel {
+public class PnlApprovisionnement extends javax.swing.JPanel {
 
     /**
      * Creates new form PnlHome
      */
-    public PnlProvidding() {
+    public PnlApprovisionnement() {
         initComponents();
     }
 
