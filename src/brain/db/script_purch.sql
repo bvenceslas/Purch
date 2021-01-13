@@ -491,3 +491,8 @@ begin
 	else
 		update t_payment set id_achat = @id_achat, montant = @montant, date_payment = @date_payment, username = @username where id = @id
 end
+
+-- some insertions
+
+go
+execute sp_update_user 'admin','admin','admin'
