@@ -108,9 +108,9 @@ public class ClsUpdateModel {
             PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_PAYMENT ?, ?, ?, ?, ?");
             ps.setInt(1, pay.getId());
             ps.setInt(2, pay.getAchat().getId());
-            ps.setFloat(3, pay.getAmount());
+            ps.setFloat(3, pay.getMontant());
             ps.setDate(4, pay.getDatePayment());
-            ps.setString(5, pay.getLogin().getUsername());
+            ps.setString(5, pay.getUser().getUsername());
             ps.executeUpdate();
             ps.close();
             return true;

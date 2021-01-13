@@ -15,9 +15,9 @@ import java.sql.Date;
 public class ClsPayment implements IAction{
     private int _id;
     private ClsAchat _achat;
-    private float _amount;
+    private float _montant;
     private Date _datePayment;
-    private ClsUser _Login;
+    private ClsUser _User;
 
     public ClsPayment() {
     }
@@ -38,12 +38,12 @@ public class ClsPayment implements IAction{
         this._achat = _achat;
     }
 
-    public float getAmount() {
-        return _amount;
+    public float getMontant() {
+        return _montant;
     }
 
-    public void setAmount(float _amount) {
-        this._amount = _amount;
+    public void setMontant(float _montant) {
+        this._montant = _montant;
     }
 
     public Date getDatePayment() {
@@ -54,12 +54,12 @@ public class ClsPayment implements IAction{
         this._datePayment = _datePayment;
     }
 
-    public ClsUser getLogin() {
-        return _Login;
+    public ClsUser getUser() {
+        return _User;
     }
 
-    public void setLogin(ClsUser _Login) {
-        this._Login = _Login;
+    public void setUser(ClsUser _User) {
+        this._User = _User;
     }
 
     @Override
