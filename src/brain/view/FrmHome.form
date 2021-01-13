@@ -7,6 +7,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fichier"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
@@ -30,6 +33,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edition"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu5">
@@ -70,6 +76,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Utilisateurs"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
@@ -82,6 +91,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rapport"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
@@ -109,6 +121,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Aide ?"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lato" size="14" style="0"/>
+            </Property>
           </Properties>
         </Menu>
       </SubComponents>
@@ -119,6 +134,7 @@
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1100, 700]"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -140,17 +156,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="JPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Component id="JPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="JPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -160,8 +176,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" alignment="1" pref="1100" max="32767" attributes="0"/>
               <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
+              <Component id="PnlOne" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -169,29 +185,12 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel2" pref="632" max="32767" attributes="0"/>
+                  <Component id="PnlOne" pref="633" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <PropertyBean type="org.jdesktop.swingx.border.DropShadowBorder">
-                <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="66" red="0" type="rgb"/>
-                </Property>
-                <Property name="showLeftShadow" type="boolean" value="true"/>
-              </PropertyBean>
-            </Property>
-          </Properties>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
-        </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -207,7 +206,7 @@
                       <Component id="jLabel4" min="-2" pref="160" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="482" max="32767" attributes="0"/>
                       <Component id="jLabel5" min="-2" pref="260" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -304,6 +303,15 @@
               </Properties>
             </Component>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PnlOne">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
         </Container>
       </SubComponents>
     </Container>
