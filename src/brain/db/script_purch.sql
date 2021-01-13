@@ -1,3 +1,6 @@
+go 
+use master
+
 create database db_purch
 
 go
@@ -147,7 +150,7 @@ create table t_ligne_provision
 	id_provision int not null,
 	id_produit int not null,
 	qty float,
-	price float,
+	prix float,
 	primary key clustered
 	(
 		id_provision,
@@ -335,7 +338,7 @@ create procedure sp_update_produit
 	@id int,
 	@produit varchar(255),
 	@quantification text, 
-	@price float,
+	@prix float,
 	@stock float,
 	@categoy varchar(255)
 )
@@ -343,9 +346,9 @@ as
 begin
 	declare @id_category int = (select id from t_category where category = @categoy)
 	if not exists(select * from t_produit where id = @id)
-		insert into t_produit values(@id, @produit, @quantification, @price, @stock, @id_category)
+		insert into t_produit values(@id, @produit, @quantification, @prix, @stock, @id_category)
 	else
-		update t_produit set produit = @produit, quantification = @quantification, price = @price, stock = @stock, id_categoy = @id_category where id = @id
+		update t_produit set produit = @produit, quantification = @quantification, prix = @prix, stock = @stock, id_categoy = @id_category where id = @id
 end
 
 --fournisseur
@@ -355,15 +358,14 @@ create procedure sp_update_fournisseur
 	@id int,
 	@nom varchar(50), 
 	@prenom varchar(50), 
-	@contact varchar(13), 
-	@addresse varchar(255)
+	@contact varchar(13)
 )
 as
 begin
 	if not exists(select * from t_fournisseur where id = @id)
-		insert into t_fournisseur values(@id, @nom, @prenom, @contact, @addresse)
+		insert into t_fournisseur values(@id, @nom, @prenom, @contact)
 	else
-		update t_fournisseur set nom = @nom, prenom = @prenom, contact = @contact, addresse = @addresse where id = @id
+		update t_fournisseur set nom = @nom, prenom = @prenom, contact = @contact where id = @id
 end
 
 
@@ -374,15 +376,14 @@ create procedure sp_update_client
 	@id int,
 	@nom varchar(50), 
 	@prenom varchar(50), 
-	@contact varchar(13), 
-	@addresse varchar(255)
+	@contact varchar(13)
 )
 as
 begin
 	if not exists(select * from t_client where id = @id)
-		insert into t_client values(@id, @nom, @prenom, @contact, @addresse)
+		insert into t_client values(@id, @nom, @prenom, @contact)
 	else
-		update t_client set nom = @nom, prenom = @prenom, contact = @contact, addresse = @addresse where id = @id
+		update t_client set nom = @nom, prenom = @prenom, contact = @contact where id = @id
 end
 
 
@@ -395,7 +396,7 @@ create procedure sp_update_line_provision
 	@date_provision date,
 	@produit  varchar(255),
 	@qty float,
-	@price float
+	@prix float
 )
 as
 begin
@@ -413,12 +414,12 @@ begin
 	-- now the ligne_provision
 	if not exists (select * from t_ligne_provision where id_provision = @id and id_produit = @id_produit)
 		begin
-			insert into t_ligne_provision values(@id, @id_produit, @qty, @price)
+			insert into t_ligne_provision values(@id, @id_produit, @qty, @prix)
 			update t_produit set stock = (stock + @qty) where id = @id_produit
 		end
 	else
 		begin
-			update t_ligne_provision set qty = @qty, price = @price where id_provision = @id and id_produit = @id_produit
+			update t_ligne_provision set qty = @qty, prix = @prix where id_provision = @id and id_produit = @id_produit
 			-- decrease the last value of the quantity
 			declare @qty_init float = (select qty from t_ligne_provision where id_provision = @id and id_produit = @id_produit)
 			update t_produit set stock = (stock - @qty_init) + @qty where id = @id_produit
@@ -479,14 +480,14 @@ create procedure sp_update_payment
 (
 	@id int,
 	@id_achat int,
-	@amount float,
+	@montant float,
 	@date_payment date,
 	@username varchar(255)
 )
 as
 begin
 	if not exists(select * from t_payment where id = @id)
-		insert into t_payment values(@id, @id_achat, @amount, @date_payment, @username)
+		insert into t_payment values(@id, @id_achat, @montant, @date_payment, @username)
 	else
-		update t_payment set id_achat = @id_achat, amount = @amount, date_payment = @date_payment, username = @username where id = @id
+		update t_payment set id_achat = @id_achat, montant = @montant, date_payment = @date_payment, username = @username where id = @id
 end
