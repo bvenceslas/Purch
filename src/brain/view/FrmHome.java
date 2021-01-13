@@ -7,6 +7,8 @@ package brain.view;
 
 import brain.controller.ClsHelper;
 import brain.view.panel.PnlProduct;
+import brain.view.panel.PnlProvidding;
+import brain.view.panel.PnlUser;
 
 /**
  *
@@ -134,11 +136,13 @@ public class FrmHome extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Database toolUp");
+        jMenuItem1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        jMenuItem1.setText("Configuration");
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Database toolUp");
+        jMenuItem2.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        jMenuItem2.setText("Deconnexion");
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -169,13 +173,23 @@ public class FrmHome extends javax.swing.JFrame {
 
         jMenuItem5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem5.setText("Categories");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem5);
 
-        jMenuItem6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jMenuItem6.setText("Approvisionnements");
-        jMenu5.add(jMenuItem6);
-
         jMenu2.add(jMenu5);
+
+        jMenuItem6.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        jMenuItem6.setText("Approvisionnements");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
 
@@ -184,6 +198,11 @@ public class FrmHome extends javax.swing.JFrame {
 
         jMenuItem7.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jMenuItem7.setText("Gérer les utilisateurs");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem7);
 
         jMenuBar1.add(jMenu6);
@@ -234,8 +253,20 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        new FrmGamme().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new FrmCategory().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        ClsHelper.load_Panel(PnlOne, new PnlProvidding());
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        ClsHelper.load_Panel(PnlOne, new PnlUser());
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
