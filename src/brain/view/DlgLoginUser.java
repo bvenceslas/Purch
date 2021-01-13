@@ -147,6 +147,11 @@ public class DlgLoginUser extends javax.swing.JDialog {
                 txtPasswordCaretUpdate(evt);
             }
         });
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/brain/view/img/eye.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -278,6 +283,10 @@ public class DlgLoginUser extends javax.swing.JDialog {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         new DlgConfig(new javax.swing.JFrame(), true).setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        loginApp(txtUsername.getText(), txtPassword.getText());
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
