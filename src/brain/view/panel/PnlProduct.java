@@ -5,6 +5,9 @@
  */
 package brain.view.panel;
 
+import brain.view.FrmCategory;
+import brain.view.FrmGamme;
+
 /**
  *
  * @author Brain
@@ -201,6 +204,11 @@ public class PnlProduct extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel7.setText("Ajouter Gamme");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton1.setText("Valider");
@@ -271,8 +279,12 @@ public class PnlProduct extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        new PnlGamme().setVisible(true);
+        new FrmCategory().setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        new FrmGamme().setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

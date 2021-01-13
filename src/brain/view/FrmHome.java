@@ -147,7 +147,9 @@ public class FrmHome extends javax.swing.JFrame {
         jMenu2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
 
         jMenu5.setText("Gestion Produits");
+        jMenu5.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem3.setText("Produits");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +158,7 @@ public class FrmHome extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem3);
 
+        jMenuItem4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem4.setText("Gamme des Produits");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,9 +167,11 @@ public class FrmHome extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem4);
 
+        jMenuItem5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem5.setText("Categories");
         jMenu5.add(jMenuItem5);
 
+        jMenuItem6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem6.setText("Approvisionnements");
         jMenu5.add(jMenuItem6);
 
@@ -177,6 +182,7 @@ public class FrmHome extends javax.swing.JFrame {
         jMenu6.setText("Utilisateurs");
         jMenu6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
 
+        jMenuItem7.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jMenuItem7.setText("Gérer les utilisateurs");
         jMenu6.add(jMenuItem7);
 
@@ -185,15 +191,19 @@ public class FrmHome extends javax.swing.JFrame {
         jMenu3.setText("Rapport");
         jMenu3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
 
+        jMenuItem8.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem8.setText("Fiche de stock");
         jMenu3.add(jMenuItem8);
 
+        jMenuItem9.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem9.setText("Inventaire du jour");
         jMenu3.add(jMenuItem9);
 
+        jMenuItem10.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem10.setText("Fiche de credit");
         jMenu3.add(jMenuItem10);
 
+        jMenuItem11.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jMenuItem11.setText("Autres fiches");
         jMenu3.add(jMenuItem11);
 
