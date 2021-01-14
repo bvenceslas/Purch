@@ -45,7 +45,7 @@ public class ClsUpdateModel {
             
         } else if (obj instanceof ClsCategory) {
             ClsCategory cat = (ClsCategory)obj;
-            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_CATEGORY ?, ?, ?");
+            PreparedStatement ps = DbConnect.connectDb().prepareStatement("EXECUTE SP_UPDATE_tCATEGORY ?, ?, ?");
             ps.setInt(1, cat.getId());
             ps.setString(2, cat.getCategory());
             ps.setString(3, cat.getGamme().getGamme());

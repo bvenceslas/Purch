@@ -5,6 +5,11 @@
  */
 package brain.view;
 
+import brain.controller.ClsHelper;
+import brain.models.ClsCategory;
+import brain.models.ClsGamme;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brain
@@ -17,6 +22,15 @@ public class FrmCategory extends javax.swing.JFrame {
     public FrmCategory() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            ClsHelper.loadTable(tabCategory, "SELECT * FROM t_category");
+            txtId.setText("" + ClsHelper.incrementIdTable("t_category"));
+            txtId.setEditable(false);
+            ClsHelper.loadComboBox(jComboBox1, "SELECT gamme from t_gamme ORDER BY gamme ASC");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur chargement Categorie: " + e.getMessage(),
+                    "validation Gamme error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -31,15 +45,15 @@ public class FrmCategory extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabCategory = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtCategory = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -50,9 +64,19 @@ public class FrmCategory extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton1.setText("Valider");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tabCategory.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        tabCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabCategoryMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabCategory);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
@@ -75,17 +99,17 @@ public class FrmCategory extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Categorie");
 
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder2);
+        txtId.setBorder(dropShadowBorder2);
 
-        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCategory.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtCategory.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowRightShadow(false);
-        jTextField3.setBorder(dropShadowBorder3);
+        txtCategory.setBorder(dropShadowBorder3);
 
         jComboBox1.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
@@ -111,8 +135,8 @@ public class FrmCategory extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
+                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(txtCategory)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -123,11 +147,11 @@ public class FrmCategory extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -139,6 +163,11 @@ public class FrmCategory extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton2.setText("Supprimer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,7 +207,7 @@ public class FrmCategory extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -201,6 +230,56 @@ public class FrmCategory extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ClsCategory categ = new ClsCategory();
+            categ.setId(Integer.valueOf(txtId.getText()));
+            categ.setCategory(txtCategory.getText());
+            ClsGamme gamme = new ClsGamme();
+            gamme.setGamme(jComboBox1.getSelectedItem().toString());
+            categ.setGamme(gamme);
+            if (categ.saveData()) {
+                JOptionPane.showMessageDialog(null, "Categorie de produits enregistrée avec succès",
+                        "validation Categorie error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.loadTable(tabCategory, "SELECT * FROM t_category");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_category"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur validation Categorie: " + e.getMessage(),
+                    "validation Categorie error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int deleteMe = JOptionPane.showConfirmDialog(this, "Supprimer cette donnée ?", "Demande de suppression", JOptionPane.YES_NO_OPTION);
+        if(deleteMe == 0){
+            try {
+            ClsCategory gamme = new ClsCategory();
+            gamme.setId(Integer.valueOf(txtId.getText()));
+            if (gamme.deleteData()) {
+                JOptionPane.showMessageDialog(null, "Categorie de produits supprimée avec succès",
+                        "Suppression Categorie error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.loadTable(tabCategory, "SELECT * FROM t_category");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_category"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur Suppression Categorie: " + e.getMessage(),
+                    "Suppression Categorie error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tabCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabCategoryMouseClicked
+        try {
+            int rowSelected = tabCategory.getSelectedRow();
+            txtId.setText(tabCategory.getModel().getValueAt(rowSelected, 0).toString());
+            txtCategory.setText(tabCategory.getModel().getValueAt(rowSelected, 1).toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lecture Categorie ligne: " + e.getMessage(),
+                    "Lecture ligne Categorie error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tabCategoryMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,9 +331,9 @@ public class FrmCategory extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tabCategory;
+    private javax.swing.JTextField txtCategory;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
