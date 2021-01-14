@@ -6,7 +6,7 @@
 package brain.view;
 
 import brain.controller.ClsHelper;
-import brain.models.ClsGamme;
+import brain.models.ClsFournisseur;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,12 +22,12 @@ public class FrmFournisseur extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            ClsHelper.loadTable(tabGamme, "SELECT * FROM t_gamme");
-            txtId.setText("" + ClsHelper.incrementIdTable("t_gamme"));
+            ClsHelper.loadTable(tabFournisseur, "SELECT * FROM t_Fournisseur");
+            txtId.setText("" + ClsHelper.incrementIdTable("t_Fournisseur"));
             txtId.setEditable(false);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erreur chargement Gamme: " + e.getMessage(),
-                    "validation Gamme error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erreur chargement Fournisseur: " + e.getMessage(),
+                    "validation Fournisseur error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -43,16 +43,16 @@ public class FrmFournisseur extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        txtContact = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtNom = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtPrenom = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabFournisseur = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -63,16 +63,16 @@ public class FrmFournisseur extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
-        jLabel1.setText("Clients");
+        jLabel1.setText("Fournisseurs");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContact.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder1 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder1.setShowRightShadow(false);
-        jTextField5.setBorder(dropShadowBorder1);
+        txtContact.setBorder(dropShadowBorder1);
 
         jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Nom");
@@ -80,26 +80,26 @@ public class FrmFournisseur extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel2.setText("ID");
 
-        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNom.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtNom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        jTextField3.setBorder(dropShadowBorder2);
+        txtNom.setBorder(dropShadowBorder2);
 
         jLabel6.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel6.setText("Prenom");
 
-        jTextField4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrenom.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtPrenom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowRightShadow(false);
-        jTextField4.setBorder(dropShadowBorder3);
+        txtPrenom.setBorder(dropShadowBorder3);
 
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder4.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder4);
+        txtId.setBorder(dropShadowBorder4);
 
         jLabel7.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel7.setText("Contact");
@@ -117,10 +117,10 @@ public class FrmFournisseur extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5))
+                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                    .addComponent(txtNom)
+                    .addComponent(txtPrenom)
+                    .addComponent(txtContact))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -129,24 +129,29 @@ public class FrmFournisseur extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tabFournisseur.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        tabFournisseur.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabFournisseurMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabFournisseur);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
@@ -240,40 +245,53 @@ public class FrmFournisseur extends javax.swing.JFrame {
         int deleteMe = JOptionPane.showConfirmDialog(this, "Supprimer cette donnée ?", "Demande de suppression", JOptionPane.YES_NO_OPTION);
         if(deleteMe == 0){
             try {
-                ClsCategory gamme = new ClsCategory();
-                gamme.setId(Integer.valueOf(txtId.getText()));
-                if (gamme.deleteData()) {
-                    JOptionPane.showMessageDialog(null, "Categorie de produits supprimée avec succès",
-                        "Suppression Categorie error", JOptionPane.INFORMATION_MESSAGE);
-                    ClsHelper.loadTable(tabCategory, "SELECT * FROM t_category");
-                    txtId.setText("" + ClsHelper.incrementIdTable("t_category"));
+                ClsFournisseur fourn = new ClsFournisseur();
+                fourn.setId(Integer.valueOf(txtId.getText()));
+                if (fourn.deleteData()) {
+                    JOptionPane.showMessageDialog(null, "Fournisseur de produits supprimée avec succès",
+                        "Suppression Fournisseur error", JOptionPane.INFORMATION_MESSAGE);
+                    ClsHelper.loadTable(tabFournisseur, "SELECT * FROM t_Fournisseur");
+                    txtId.setText("" + ClsHelper.incrementIdTable("t_Fournisseur"));
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erreur Suppression Categorie: " + e.getMessage(),
-                    "Suppression Categorie error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erreur Suppression Fournisseur: " + e.getMessage(),
+                    "Suppression Fournisseur error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            ClsCategory categ = new ClsCategory();
-            categ.setId(Integer.valueOf(txtId.getText()));
-            categ.setCategory(txtCategory.getText());
-            ClsGamme gamme = new ClsGamme();
-            gamme.setGamme(jComboBox1.getSelectedItem().toString());
-            categ.setGamme(gamme);
-            if (categ.saveData()) {
-                JOptionPane.showMessageDialog(null, "Categorie de produits enregistrée avec succès",
-                    "validation Categorie error", JOptionPane.INFORMATION_MESSAGE);
-                ClsHelper.loadTable(tabCategory, "SELECT * FROM t_category");
-                txtId.setText("" + ClsHelper.incrementIdTable("t_category"));
+            ClsFournisseur fourn = new ClsFournisseur();
+            fourn.setId(Integer.valueOf(txtId.getText()));
+            fourn.setNom(txtNom.getText());
+            fourn.setPrenom(txtPrenom.getText());
+            fourn.setContact(txtContact.getText());
+            if (fourn.saveData()) {
+                JOptionPane.showMessageDialog(null, "Fournisseur enregistré avec succès",
+                    "validation Fournisseur error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.loadTable(tabFournisseur, "SELECT * FROM t_Fournisseur");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_Fournisseur"));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erreur validation Categorie: " + e.getMessage(),
-                "validation Categorie error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erreur validation Fournisseur: " + e.getMessage(),
+                "validation Fournisseur error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabFournisseurMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabFournisseurMouseClicked
+        try {
+            int rowSelected = tabFournisseur.getSelectedRow();
+            txtId.setText(tabFournisseur.getModel().getValueAt(rowSelected, 0).toString());
+            txtNom.setText(tabFournisseur.getModel().getValueAt(rowSelected, 1).toString());
+            txtPrenom.setText(tabFournisseur.getModel().getValueAt(rowSelected, 2).toString());
+            txtContact.setText(tabFournisseur.getModel().getValueAt(rowSelected, 3).toString());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lecture Fournisseur ligne: " + e.getMessage(),
+                    "Lecture ligne Fournisseur error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tabFournisseurMouseClicked
 
     /**
      * @param args the command line arguments
@@ -329,11 +347,11 @@ public class FrmFournisseur extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tabFournisseur;
+    private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNom;
+    private javax.swing.JTextField txtPrenom;
     // End of variables declaration//GEN-END:variables
 }
