@@ -5,6 +5,7 @@
  */
 package brain.models;
 
+import brain.controller.ClsUpdateModel;
 import brain.controller.IAction;
 
 /**
@@ -51,13 +52,13 @@ public class ClsClient implements IAction{
     }
 
     @Override
-    public boolean saveData() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean saveData() throws Exception {       
+        return ClsUpdateModel.updateData(this);
     }
 
     @Override
     public boolean deleteData() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ClsUpdateModel.deleteData("", getId());
     }
     
 }
