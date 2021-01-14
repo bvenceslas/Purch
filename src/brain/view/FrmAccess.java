@@ -5,6 +5,10 @@
  */
 package brain.view;
 
+import brain.controller.ClsHelper;
+import brain.models.ClsAccessSetup;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brain
@@ -17,6 +21,14 @@ public class FrmAccess extends javax.swing.JFrame {
     public FrmAccess() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            ClsHelper.Load_TblData(tabAccess, "SELECT * FROM t_access_setup");
+            txtId.setText("" + ClsHelper.Increment_ID("t_access_setup"));
+            txtId.setEditable(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur chargement Niveau Acces: " + e.getMessage(),
+                    "validation Niveau Accès error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -31,15 +43,15 @@ public class FrmAccess extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabAccess = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtAccessSetup = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -48,18 +60,28 @@ public class FrmAccess extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton1.setText("Valider");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tabAccess.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        tabAccess.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabAccessMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabAccess);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
 
-        jTextField2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSearch.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtSearch.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder1 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder1.setShowRightShadow(false);
-        jTextField2.setBorder(dropShadowBorder1);
+        txtSearch.setBorder(dropShadowBorder1);
 
         jLabel1.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jLabel1.setText("Niveau d'accès");
@@ -73,17 +95,17 @@ public class FrmAccess extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Niveau Acces");
 
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder2);
+        txtId.setBorder(dropShadowBorder2);
 
-        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAccessSetup.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtAccessSetup.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowRightShadow(false);
-        jTextField3.setBorder(dropShadowBorder3);
+        txtAccessSetup.setBorder(dropShadowBorder3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,8 +118,8 @@ public class FrmAccess extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(jTextField3)))
+                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(txtAccessSetup)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,16 +127,21 @@ public class FrmAccess extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAccessSetup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton2.setText("Supprimer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,7 +168,7 @@ public class FrmAccess extends javax.swing.JFrame {
                 .addGap(140, 140, 140)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,7 +178,7 @@ public class FrmAccess extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
@@ -177,6 +204,53 @@ public class FrmAccess extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ClsAccessSetup accessSetup = new ClsAccessSetup();
+            accessSetup.setId(Integer.valueOf(txtId.getText()));
+            accessSetup.setAccessLevel(txtAccessSetup.getText());
+            if (accessSetup.saveData()) {
+                JOptionPane.showMessageDialog(null, "Niveau d'Accès enregistré avec succès",
+                        "validation Niveau Acces error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.Load_TblData(tabAccess, "SELECT * FROM t_access_setup");
+                txtId.setText("" + ClsHelper.Increment_ID("t_access_setup"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur validation Niveau Acces: " + e.getMessage(),
+                    "validation Niveau Acces error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabAccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabAccessMouseClicked
+        try {
+            int rowSelected = tabAccess.getSelectedRow();
+            txtId.setText(tabAccess.getModel().getValueAt(rowSelected, 0).toString());
+            txtAccessSetup.setText(tabAccess.getModel().getValueAt(rowSelected, 1).toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lecture Niveau Acces ligne: " + e.getMessage(),
+                    "Lecture ligne Niveau Acces error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tabAccessMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int deleteMe = JOptionPane.showConfirmDialog(this, "Supprimer cette donnée ?", "Demande de suppression", JOptionPane.YES_NO_OPTION);
+        if(deleteMe == 0){
+            try {
+            ClsAccessSetup accessSetup = new ClsAccessSetup();
+            accessSetup.setId(Integer.valueOf(txtId.getText()));
+            if (accessSetup.deleteData()) {
+                JOptionPane.showMessageDialog(null, "Niveau d'Accès supprimé avec succès",
+                        "Suppression Niveau Acces error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.Load_TblData(tabAccess, "SELECT * FROM t_access_setup");
+                txtId.setText("" + ClsHelper.Increment_ID("t_access_setup"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur Suppression Niveau Acces: " + e.getMessage(),
+                    "Suppression Niveau Acces error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,9 +300,9 @@ public class FrmAccess extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tabAccess;
+    private javax.swing.JTextField txtAccessSetup;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
