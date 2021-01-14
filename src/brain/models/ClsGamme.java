@@ -42,7 +42,7 @@ public class ClsGamme implements IAction{
 
     @Override
     public boolean deleteData() throws Exception {
-        return ClsUpdateModel.deleteData("", getId());
+        return ClsUpdateModel.deleteData("t_gamme", getId());
     }
     
 }
