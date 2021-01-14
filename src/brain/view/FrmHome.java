@@ -271,7 +271,7 @@ public class FrmHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        ClsHelper.load_Panel(PnlOne, new PnlProduct());
+        ClsHelper.loadPanel(PnlOne, new PnlProduct());
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -283,19 +283,19 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        ClsHelper.load_Panel(PnlOne, new PnlApprovisionnement());
+        ClsHelper.loadPanel(PnlOne, new PnlApprovisionnement());
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        ClsHelper.load_Panel(PnlOne, new PnlPayment());
+        ClsHelper.loadPanel(PnlOne, new PnlPayment());
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        ClsHelper.load_Panel(PnlOne, new PnlAchat());
+        ClsHelper.loadPanel(PnlOne, new PnlAchat());
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        ClsHelper.load_Panel(PnlOne, new PnlUser());
+        ClsHelper.loadPanel(PnlOne, new PnlUser());
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed

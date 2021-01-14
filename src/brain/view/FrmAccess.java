@@ -22,8 +22,8 @@ public class FrmAccess extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         try {
-            ClsHelper.Load_TblData(tabAccess, "SELECT * FROM t_access_setup");
-            txtId.setText("" + ClsHelper.Increment_ID("t_access_setup"));
+            ClsHelper.loadTable(tabAccess, "SELECT * FROM t_access_setup");
+            txtId.setText("" + ClsHelper.incrementIdTable("t_access_setup"));
             txtId.setEditable(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erreur chargement Niveau Acces: " + e.getMessage(),
@@ -213,8 +213,8 @@ public class FrmAccess extends javax.swing.JFrame {
             if (accessSetup.saveData()) {
                 JOptionPane.showMessageDialog(null, "Niveau d'Accès enregistré avec succès",
                         "validation Niveau Acces error", JOptionPane.INFORMATION_MESSAGE);
-                ClsHelper.Load_TblData(tabAccess, "SELECT * FROM t_access_setup");
-                txtId.setText("" + ClsHelper.Increment_ID("t_access_setup"));
+                ClsHelper.loadTable(tabAccess, "SELECT * FROM t_access_setup");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_access_setup"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erreur validation Niveau Acces: " + e.getMessage(),
@@ -242,8 +242,8 @@ public class FrmAccess extends javax.swing.JFrame {
             if (accessSetup.deleteData()) {
                 JOptionPane.showMessageDialog(null, "Niveau d'Accès supprimé avec succès",
                         "Suppression Niveau Acces error", JOptionPane.INFORMATION_MESSAGE);
-                ClsHelper.Load_TblData(tabAccess, "SELECT * FROM t_access_setup");
-                txtId.setText("" + ClsHelper.Increment_ID("t_access_setup"));
+                ClsHelper.loadTable(tabAccess, "SELECT * FROM t_access_setup");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_access_setup"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erreur Suppression Niveau Acces: " + e.getMessage(),
