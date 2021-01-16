@@ -5,8 +5,13 @@
  */
 package brain.view.panel;
 
+import brain.controller.ClsHelper;
+import brain.models.ClsCategory;
+import brain.models.ClsClient;
+import brain.models.ClsProduit;
 import brain.view.FrmCategory;
 import brain.view.FrmGamme;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +24,16 @@ public class PnlProduct extends javax.swing.JPanel {
      */
     public PnlProduct() {
         initComponents();
+        try {
+            ClsHelper.loadTable(tabProduit, "SELECT * FROM t_produit");
+            txtId.setText("" + ClsHelper.incrementIdTable("t_produit"));
+            txtId.setEditable(false);
+            ClsHelper.loadComboBox(cmbCategorie, "select category from t_category order by category");
+            ClsHelper.loadComboBox(cmbQuantification, "select quantification from t_quantification order by quantification");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur chargement Produits: " + e.getMessage(),
+                    "Chargement Produit error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -60,6 +75,11 @@ public class PnlProduct extends javax.swing.JPanel {
         jLabel1.setText("Produits");
 
         tabProduit.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        tabProduit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabProduitMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabProduit);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
@@ -213,9 +233,19 @@ public class PnlProduct extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton1.setText("Valider");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton3.setText("Supprimer");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -283,6 +313,64 @@ public class PnlProduct extends javax.swing.JPanel {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         new FrmGamme().setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ClsProduit prod = new ClsProduit();
+            ClsCategory categ = new ClsCategory();
+            prod.setId(Integer.valueOf(txtId.getText()));
+            prod.setProduit(txtProduit.getText());
+            prod.setQuantification(cmbQuantification.getSelectedItem().toString());
+            categ.setCategory(cmbCategorie.getSelectedItem().toString());
+            prod.setCategory(categ);
+            prod.setStock(Float.parseFloat(txtStockInit.getText()));
+            prod.setPrix(Float.parseFloat(txtPrix.getText()));
+            if (prod.saveData()) {
+                JOptionPane.showMessageDialog(null, "Produit enregistré avec succès",
+                    "validation Client error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.loadTable(tabProduit, "SELECT * FROM t_produit");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_produit"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur validation Produit: " + e.getMessage(),
+                "validation Produit error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabProduitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabProduitMouseClicked
+        try {
+            int rowSelected = tabProduit.getSelectedRow();
+            txtId.setText(tabProduit.getModel().getValueAt(rowSelected, 0).toString());
+            txtProduit.setText(tabProduit.getModel().getValueAt(rowSelected, 1).toString());
+            cmbQuantification.setSelectedItem(tabProduit.getModel().getValueAt(rowSelected, 2).toString());
+            cmbCategorie.setSelectedItem(tabProduit.getModel().getValueAt(rowSelected, 3).toString());
+            txtStockInit.setText(tabProduit.getModel().getValueAt(rowSelected, 4).toString());
+            txtPrix.setText(tabProduit.getModel().getValueAt(rowSelected, 5).toString());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lecture Produit ligne: " + e.getMessage(),
+                    "Lecture ligne Produit error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tabProduitMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int deleteMe = JOptionPane.showConfirmDialog(this, "Supprimer cette donnée ?", "Demande de suppression", JOptionPane.YES_NO_OPTION);
+        if(deleteMe == 0){
+            try {
+                ClsProduit prod = new ClsProduit();
+                prod.setId(Integer.valueOf(txtId.getText()));
+                if (prod.deleteData()) {
+                    JOptionPane.showMessageDialog(null, "Produit supprimé avec succès",
+                        "Suppression Produit error", JOptionPane.INFORMATION_MESSAGE);
+                    ClsHelper.loadTable(tabProduit, "SELECT * FROM t_produit");
+                    txtId.setText("" + ClsHelper.incrementIdTable("t_produit"));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erreur Suppression Produit: " + e.getMessage(),
+                    "Suppression Produit error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

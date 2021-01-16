@@ -76,7 +76,7 @@ public class ClsProduit implements IAction{
 
     @Override
     public boolean deleteData() throws Exception {
-        return ClsUpdateModel.deleteData("", getId());
+        return ClsUpdateModel.deleteData("t_produit", getId());
     }
     
     
