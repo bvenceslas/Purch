@@ -5,6 +5,7 @@
  */
 package brain.view.panel;
 
+import brain.controller.ClsHelper;
 import brain.view.FrmFournisseur;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +23,16 @@ public class PnlApprovisionnement extends javax.swing.JPanel {
      */
     public PnlApprovisionnement() {
         initComponents();
+        try {
+            ClsHelper.loadTable(tabApprov, "SELECT * FROM t_Provision");
+            txtId.setText("" + ClsHelper.incrementIdTable("t_provision"));
+            txtId.setEditable(false);
+            ClsHelper.loadComboBox(cmbFourn, "SELECT CONCAT(nom, ' ', prenom) FROM t_fournisseur ORDER BY nom");
+            ClsHelper.loadComboBox(cmbProduit, "SELECT produit FROM t_produit ORDER BY produit");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur chargement Approvisionnement: " + e.getMessage(),
+                    "Chargement Approvisionnement error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private void ajt_panier() {

@@ -32,22 +32,22 @@ public class PnlProduct extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabProduit = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtProduit = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtPrix = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtStockInit = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbQuantification = new javax.swing.JComboBox<>();
+        cmbCategorie = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -59,8 +59,8 @@ public class PnlProduct extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jLabel1.setText("Produits");
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tabProduit.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        jScrollPane1.setViewportView(tabProduit);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
@@ -83,54 +83,54 @@ public class PnlProduct extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Produit");
 
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder2);
+        txtId.setBorder(dropShadowBorder2);
 
-        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtProduit.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtProduit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowRightShadow(false);
-        jTextField3.setBorder(dropShadowBorder3);
+        txtProduit.setBorder(dropShadowBorder3);
 
         jLabel8.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel8.setText("Prix");
 
-        jTextField7.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrix.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtPrix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder4.setShowRightShadow(false);
-        jTextField7.setBorder(dropShadowBorder4);
+        txtPrix.setBorder(dropShadowBorder4);
 
         jLabel10.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel10.setText("Stock Init.");
 
-        jTextField8.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtStockInit.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtStockInit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder5 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder5.setShowRightShadow(false);
-        jTextField8.setBorder(dropShadowBorder5);
+        txtStockInit.setBorder(dropShadowBorder5);
 
         jLabel11.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel11.setText("Categorie");
 
-        jComboBox1.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
+        cmbQuantification.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder6 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder6.setShowBottomShadow(false);
         dropShadowBorder6.setShowLeftShadow(true);
         dropShadowBorder6.setShowRightShadow(false);
         dropShadowBorder6.setShowTopShadow(true);
-        jComboBox1.setBorder(dropShadowBorder6);
+        cmbQuantification.setBorder(dropShadowBorder6);
 
-        jComboBox2.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
+        cmbCategorie.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder7 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder7.setShowBottomShadow(false);
         dropShadowBorder7.setShowLeftShadow(true);
         dropShadowBorder7.setShowRightShadow(false);
         dropShadowBorder7.setShowTopShadow(true);
-        jComboBox2.setBorder(dropShadowBorder7);
+        cmbCategorie.setBorder(dropShadowBorder7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,9 +144,9 @@ public class PnlProduct extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField3)
-                    .addComponent(jComboBox1, 0, 250, Short.MAX_VALUE))
+                    .addComponent(txtId)
+                    .addComponent(txtProduit)
+                    .addComponent(cmbQuantification, 0, 250, Short.MAX_VALUE))
                 .addGap(98, 98, 98)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,10 +156,10 @@ public class PnlProduct extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStockInit, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmbCategorie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -170,28 +170,29 @@ public class PnlProduct extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel8)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel10)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStockInit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(cmbCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(cmbQuantification, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jLabel4.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
@@ -221,20 +222,17 @@ public class PnlProduct extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(195, 195, 195)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -263,7 +261,7 @@ public class PnlProduct extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +272,7 @@ public class PnlProduct extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,10 +286,10 @@ public class PnlProduct extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbCategorie;
+    private javax.swing.JComboBox<String> cmbQuantification;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -304,11 +302,11 @@ public class PnlProduct extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tabProduit;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtPrix;
+    private javax.swing.JTextField txtProduit;
+    private javax.swing.JTextField txtStockInit;
     // End of variables declaration//GEN-END:variables
 }
