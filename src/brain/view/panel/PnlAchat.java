@@ -5,17 +5,58 @@
  */
 package brain.view.panel;
 
+import brain.view.FrmClient;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Brain
  */
 public class PnlAchat extends javax.swing.JPanel {
 
+    public DefaultTableModel dtm;
     /**
      * Creates new form PnlHome
      */
     public PnlAchat() {
         initComponents();
+    }
+    
+    private void ajt_panier() {
+        try {
+            boolean tst = false;
+            for (int i = 0; i < tabAchat.getRowCount(); i++) {
+                if (cmbProduit.getSelectedItem().equals(tabAchat.getModel().getValueAt(i, 0).toString())) {
+                    tst = true;
+                    break;
+                }
+
+            }
+            if (tst == false) {
+                Object ob[] = {cmbProduit.getSelectedItem(), txtQte.getText(), txtReduction.getText()};
+                dtm.addRow(ob);
+                tabAchat.setModel(dtm);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Ce produit existe déja");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void supp_panier() {
+        int op = JOptionPane.showConfirmDialog(null, "Etes-vous sur de vouloir Supprimer ?", "Suppression", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (op == JOptionPane.OK_OPTION) {
+            try {
+                dtm.removeRow(tabAchat.getSelectedRow());
+                JOptionPane.showMessageDialog(this, "Suppression reussi", "Suppression", JOptionPane.INFORMATION_MESSAGE);
+                tabAchat.setModel(dtm);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     /**
@@ -29,23 +70,23 @@ public class PnlAchat extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabAchat = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtReduction = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        cmbProduit = new javax.swing.JComboBox<>();
+        txtQte = new javax.swing.JTextField();
+        txtDate = new org.jdesktop.swingx.JXDatePicker();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cmbClient = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -57,8 +98,8 @@ public class PnlAchat extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jLabel1.setText("Achats");
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tabAchat.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        jScrollPane1.setViewportView(tabAchat);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
@@ -81,57 +122,62 @@ public class PnlAchat extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Produit");
 
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder2);
+        txtId.setBorder(dropShadowBorder2);
 
         jLabel8.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jLabel8.setText("Fournisseur");
+        jLabel8.setText("Client");
 
         jLabel10.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel10.setText("Date");
 
-        jTextField8.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtReduction.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtReduction.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowRightShadow(false);
-        jTextField8.setBorder(dropShadowBorder3);
+        txtReduction.setBorder(dropShadowBorder3);
 
         jLabel11.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jLabel11.setText("Prix");
+        jLabel11.setText("Reduction");
 
-        jComboBox2.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
+        cmbProduit.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder4.setShowBottomShadow(false);
         dropShadowBorder4.setShowLeftShadow(true);
         dropShadowBorder4.setShowRightShadow(false);
         dropShadowBorder4.setShowTopShadow(true);
-        jComboBox2.setBorder(dropShadowBorder4);
+        cmbProduit.setBorder(dropShadowBorder4);
 
-        jTextField4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtQte.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtQte.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder5 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder5.setShowRightShadow(false);
-        jTextField4.setBorder(dropShadowBorder5);
+        txtQte.setBorder(dropShadowBorder5);
 
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder6 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder6.setShowBottomShadow(false);
         dropShadowBorder6.setShowLeftShadow(true);
         dropShadowBorder6.setShowRightShadow(false);
         dropShadowBorder6.setShowTopShadow(true);
-        jXDatePicker1.setBorder(dropShadowBorder6);
+        txtDate.setBorder(dropShadowBorder6);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/brain/view/img/validate.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
-        jComboBox3.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
+        cmbClient.setFont(new java.awt.Font("Lato", 1, 12)); // NOI18N
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder7 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder7.setShowBottomShadow(false);
         dropShadowBorder7.setShowLeftShadow(true);
         dropShadowBorder7.setShowRightShadow(false);
         dropShadowBorder7.setShowTopShadow(true);
-        jComboBox3.setBorder(dropShadowBorder7);
+        cmbClient.setBorder(dropShadowBorder7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,8 +194,8 @@ public class PnlAchat extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(58, 58, 58)
                         .addComponent(jLabel4)
                         .addGap(6, 6, 6)
@@ -158,16 +204,16 @@ public class PnlAchat extends javax.swing.JPanel {
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cmbClient, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQte, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtReduction, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -175,26 +221,26 @@ public class PnlAchat extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbClient, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(jLabel3)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtQte, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtReduction, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -270,14 +316,18 @@ public class PnlAchat extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        new FrmClient().setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbClient;
+    private javax.swing.JComboBox<String> cmbProduit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -289,11 +339,11 @@ public class PnlAchat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField8;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private javax.swing.JTable tabAchat;
+    private org.jdesktop.swingx.JXDatePicker txtDate;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtQte;
+    private javax.swing.JTextField txtReduction;
     // End of variables declaration//GEN-END:variables
 }
