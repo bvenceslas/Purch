@@ -51,7 +51,7 @@ public class ClsCategory implements IAction{
 
     @Override
     public boolean deleteData() throws Exception {
-        return ClsUpdateModel.deleteData("", getId());
+        return ClsUpdateModel.deleteData("t_category", getId());
     }
     
 }

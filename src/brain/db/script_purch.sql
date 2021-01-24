@@ -303,7 +303,7 @@ create procedure sp_update_tcategory
 (
 	@id int,
 	@category varchar(255),
-	@gamme int 
+	@gamme varchar(255) 
 )
 as
 begin

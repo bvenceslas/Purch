@@ -58,7 +58,7 @@ public class ClsFournisseur implements IAction{
 
     @Override
     public boolean deleteData() throws Exception {
-        return ClsUpdateModel.deleteData("", getId());
+        return ClsUpdateModel.deleteData("t_fournisseur", getId());
     }
     
 }

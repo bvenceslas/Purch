@@ -5,6 +5,10 @@
  */
 package brain.view;
 
+import brain.controller.ClsHelper;
+import brain.models.ClsGamme;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brain
@@ -17,6 +21,14 @@ public class FrmGamme extends javax.swing.JFrame {
     public FrmGamme() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            ClsHelper.loadTable(tabGamme, "SELECT * FROM t_gamme");
+            txtId.setText("" + ClsHelper.incrementIdTable("t_gamme"));
+            txtId.setEditable(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur chargement Gamme: " + e.getMessage(),
+                    "validation Gamme error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -31,15 +43,15 @@ public class FrmGamme extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabGamme = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtGamme = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -48,9 +60,19 @@ public class FrmGamme extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton1.setText("Valider");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        tabGamme.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        tabGamme.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabGammeMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabGamme);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Rechercher");
@@ -73,17 +95,17 @@ public class FrmGamme extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Gamme");
 
-        jTextField1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder2.setShowRightShadow(false);
-        jTextField1.setBorder(dropShadowBorder2);
+        txtId.setBorder(dropShadowBorder2);
 
-        jTextField3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtGamme.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        txtGamme.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowRightShadow(false);
-        jTextField3.setBorder(dropShadowBorder3);
+        txtGamme.setBorder(dropShadowBorder3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,8 +118,8 @@ public class FrmGamme extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(jTextField3)))
+                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(txtGamme)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,16 +127,21 @@ public class FrmGamme extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGamme, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jButton2.setText("Supprimer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,6 +205,53 @@ public class FrmGamme extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ClsGamme gamme = new ClsGamme();
+            gamme.setId(Integer.valueOf(txtId.getText()));
+            gamme.setGamme(txtGamme.getText());
+            if (gamme.saveData()) {
+                JOptionPane.showMessageDialog(null, "Gamme de produits enregistrée avec succès",
+                        "validation Gamme error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.loadTable(tabGamme, "SELECT * FROM t_gamme");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_gamme"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur validation Gamme: " + e.getMessage(),
+                    "validation Gamme error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabGammeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabGammeMouseClicked
+        try {
+            int rowSelected = tabGamme.getSelectedRow();
+            txtId.setText(tabGamme.getModel().getValueAt(rowSelected, 0).toString());
+            txtGamme.setText(tabGamme.getModel().getValueAt(rowSelected, 1).toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur lecture Gamme ligne: " + e.getMessage(),
+                    "Lecture ligne Gamme error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tabGammeMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int deleteMe = JOptionPane.showConfirmDialog(this, "Supprimer cette donnée ?", "Demande de suppression", JOptionPane.YES_NO_OPTION);
+        if(deleteMe == 0){
+            try {
+            ClsGamme gamme = new ClsGamme();
+            gamme.setId(Integer.valueOf(txtId.getText()));
+            if (gamme.deleteData()) {
+                JOptionPane.showMessageDialog(null, "Gamme de produits supprimée avec succès",
+                        "Suppression Niveau Acces error", JOptionPane.INFORMATION_MESSAGE);
+                ClsHelper.loadTable(tabGamme, "SELECT * FROM t_gamme");
+                txtId.setText("" + ClsHelper.incrementIdTable("t_gamme"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erreur Suppression gamme: " + e.getMessage(),
+                    "Suppression gamme error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -224,9 +298,9 @@ public class FrmGamme extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tabGamme;
+    private javax.swing.JTextField txtGamme;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

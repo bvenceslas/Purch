@@ -16,7 +16,7 @@ public class ClsHelper {
     public static PreparedStatement pst = null;
     public static ResultSet rs = null;
     
-    public static void load_Panel(JPanel pnl1, JPanel pnl2)
+    public static void loadPanel(JPanel pnl1, JPanel pnl2)
     {
         pnl1.removeAll();
         pnl1.add(pnl2);
@@ -24,7 +24,7 @@ public class ClsHelper {
         pnl1.repaint();
     }
     
-    public static void Load_TblData(JTable table, String Querry) throws Exception
+    public static void loadTable(JTable table, String Querry) throws Exception
     {        
         dtm = new DefaultTableModel();
         pst = DbConnect.connectDb().prepareStatement(Querry);
@@ -52,8 +52,25 @@ public class ClsHelper {
         
     }
     
+    public static void tableToForm(JTable table,Object obj[]) throws Exception
+{
+    try 
+    {
+        if (table.getSelectedRow()>=0)
+        {
+            for(int m=0;m<table.getColumnCount();m++)
+            {
+                obj[m]=table.getValueAt(table.getSelectedRow(), m).toString();
+            }
+        }
+    } catch (Exception e) 
+    {
+        throw new Exception(e.getMessage());
+    }
+}
+    
     //fonction pour charger les comboBox
-    public static void Load_CmbBox(JComboBox comboBox,String Requette) throws Exception
+    public static void loadComboBox(JComboBox comboBox,String Requette) throws Exception
     {        
         comboBox.removeAllItems();
         pst = DbConnect.connectDb().prepareStatement(Requette);
@@ -65,7 +82,7 @@ public class ClsHelper {
        
     }
     
-    public static int Increment_ID(String table) throws Exception
+    public static int incrementIdTable(String table) throws Exception
     {        
         pst = DbConnect.connectDb().prepareStatement("SELECT COALESCE(MAX(id),0) FROM "+table+"");
         rs = pst.executeQuery();
@@ -76,7 +93,7 @@ public class ClsHelper {
         return 0;
     } 
     
-    public static void TextClean(JTextField txt)
+    public static void txtClean(JTextField txt)
     {
         txt.setText("");
     }
